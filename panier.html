@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="robots" content="index, follow">
+        <link rel="stylesheet" href="style.css">
+        <title>Oricam - Votre panier</title>
+    </head>
+
+    <body>
+
+        <!-- Header avec à gauche l'icone cliquable du site, à droite celle du panier -->
+        <header>
+            <nav>
+                <a href="index.html" class="logo-header">
+                    <img src="img/logo.png-svg" alt="Logo de Oricam" aria-label="Accéder à la page d'accueil">
+                </a>
+                <a href="panier.html" class="panier-header">
+                    <img src="img/panier.png-svg" alt="Icone du panier" aria-label="Accéder au panier">
+                </a>
+            </nav>
+        </header>
+
+        <!-- Visualisation du panier -->
+        <section class="panier-container" id="panier">
+            <h1 class="panier-titre">Récapitulatif de votre commande</h1>
+            <h2 class="panier-sous-titre">Votre panier</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Appareil photo</th>
+                        <th>Objectif</th>
+                        <th>Quantité</th>
+                        <th>Prix</th>
+                        <th id="panier-supprimer">
+                            <!-- Ajout suppression élément panier via JS -->
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="panier-contenu"> 
+                    <!-- Ajout contenu du panier via JS-->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">Total</td>
+                        <td id="panier-prix">
+                            <!-- Ajout prix total via JS -->
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <!-- Formulaire de validation -->
+            <h2>Vos coordonnées</h2>
+            <p><em>Merci de veiller à bien remplir tous les champs</em></p>
+            <form class="panier-form">
+                <div class="form-group">
+                    <label for="prenom">Prénom</label>
+                    <input type="text" name="prenom" id="prenom" required="" aria-invalid="false">
+                </div>
+                <div class="form group">
+                    <label for="nom">Nom</label>
+                    <input type="text" name="nom" id="nom" required="" aria-invalid="false">
+                </div>
+                <div class="form-group">
+                    <label for="adresse">Adresse</label>
+                    <input type="text" name="adresse" id="adresse" required="" aria-invalid="false">
+                </div>
+                <div class="form-group">
+                    <label for="ville">Ville</label>
+                    <input type="text" name="ville" id="ville" required="" aria-invalid="false">
+                </div>
+                <div class="form-group">
+                    <label for="email">e-mail</label>
+                    <input type="text" name="email" id="email" required="" aria-invalid="false">
+                </div>
+                <button type="submit" class="bouton-panier" aria-label="Valider la commande">Valider la commande</button>
+            </form>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer-distributed">
+            <!-- Gauche : lien vers les mentions légales du site-->
+            <div class="footer-left">
+                <div class="footer-legal">
+                    <a href="mentions.html">Mentions légales</a>
+                </div>
+            </div>
+            <!-- Centre : icones cliquable redirigeants vers les différents comptes réseaux sociaux-->
+            <div class="footer-center">
+                <a href="https://twitter.com/" target="blank" title="Retrouvez nous sur Twitter" aria-label="Retrouver nous sur Twitter"><span class="fa fa-twitter" aria-hidden="true"></span></a>	
+				<a href="https://facebook.com/" target="blank" title="Retrouvez nous sur Facebook" aria-label="Retrouver nous sur Facebook"><span class="fa fa-facebook" aria-hidden="true"></span></a>	
+				<a href="https://dribbble.com/" target="blank" title="Retrouvez nous sur Dribbble" aria-label="Retrouver nous sur Dribbble"><span class="fa fa-dribbble" aria-hidden="true"></span></a>	
+				<a href="https://www.instagram.com/" target="blank" title="Retrouvez nous sur Instagram" aria-label="Retrouver nous sur Instagram"><span class="fa fa-instagram" aria-hidden="true"></span></a>	
+            </div>
+            <!-- Droite : lien contact -->
+            <div class="footer-right">
+                <a href="#">Contact</a>
+            </div>
+        </footer>
+
+    </body>
+</html>
+
