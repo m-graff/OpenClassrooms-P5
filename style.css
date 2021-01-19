@@ -1,9 +1,36 @@
 body {
     margin: 0;
+    font-family: 'Federo', sans-serif;
+}
+
+h1 {
+    font-size: 2.5em;
+    text-transform: uppercase;
+}
+
+hr {
+    border-top: 3px solid white;
+    margin: 30px;
+}
+
+h2 {
+    font-size: 1.1em;
+    margin: 5%;
+}
+
+.btn-produits {
+    text-decoration: none;
+    background: #7f72f8;
+    color: #fff!important;
+    text-transform: uppercase;
+    margin: auto;
+    padding: 12px 28px 12px 28px;
+    font-size: 16px;
+    border-radius: 40px;
 }
 
 nav {
-    background-color: rgba(198, 245, 167, 0.384);
+    background-color:  #d0cbff;
     height: 80px;
     display: flex;
 }
@@ -14,10 +41,10 @@ nav a {
 
 .hero {
     display: flex;
-    background-image: url(img/banner.png);
+    background-image: url(img/banner_3.jpg);
     background-size: cover;
-    background-position: center;
-    height: 500px; 
+    background-position: bottom;
+    height: 600px; 
 }
 
 .hero-content {
@@ -26,23 +53,11 @@ nav a {
     text-align: center;
 }
 
-.btn-produits {
-    text-decoration: none;
-    background: #bf5921;
-    color: #fff!important;
-    text-transform: uppercase;
-    margin-top: 22px;
-    padding: 12px 28px 12px 28px;
-    font-size: 16px;
-    font-weight: 700;
-    border-radius: 40px;
-}
-
 #liste-produits {
     height: 500px;
 }
 
-h2 {
+h3 {
     margin-top: 5%;
     text-align: center;
 }
