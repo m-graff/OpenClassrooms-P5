@@ -6,7 +6,11 @@
         <meta name="description" content="">
         <meta name="robots" content="noindex, follow">
         <link rel="stylesheet" href="style.css">
+        <link rel="shortcut icon" type="image/png" href="./img/favicon.jpg">
         <title>Oricam - Votre panier</title>
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Federo&display=swap" rel="stylesheet">
     </head>
 
     <body>
@@ -15,10 +19,10 @@
         <header>
             <nav>
                 <a href="index.html" class="logo-header">
-                    <img src="img/logo.png-svg" alt="Logo de Oricam" aria-label="Accéder à la page d'accueil">
+                    <img src="img/logo.svg" alt="Logo de Oricam" aria-label="Accéder à la page d'accueil">
                 </a>
                 <a href="panier.html" class="panier-header">
-                    <img src="img/panier.png-svg" alt="Icone du panier" aria-label="Accéder au panier">
+                    <img src="img/panier.svg" alt="Icone du panier" aria-label="Accéder au panier">
                 </a>
             </nav>
         </header>
@@ -44,7 +48,7 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="3">Total</td>
+                        <td colspan="3" id="form-total">Total de la commande</td>
                         <td id="panier-prix">
                             <!-- Ajout prix total via JS -->
                         </td>
@@ -53,7 +57,7 @@
             </table>
 
             <!-- Formulaire de validation -->
-            <h2>Vos coordonnées</h2>
+            <h2 id="form-titre">Vos coordonnées</h2>
             <p><em>Merci de veiller à bien remplir tous les champs</em></p>
             <form class="panier-form">
                 <div class="form-group">
