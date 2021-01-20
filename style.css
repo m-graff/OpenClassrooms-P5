@@ -10,20 +10,23 @@ h1 {
 
 hr {
     border-top: 3px solid white;
-    margin: 30px;
+    width: 60%;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
 h2 {
     font-size: 1.1em;
-    margin: 5%;
+    margin-bottom: 5%;
 }
 
 .btn-produits {
+    margin: auto;
+
     text-decoration: none;
     background: #7f72f8;
     color: #fff!important;
     text-transform: uppercase;
-    margin: auto;
     padding: 12px 28px 12px 28px;
     font-size: 16px;
     border-radius: 40px;
@@ -41,6 +44,7 @@ nav a {
 
 .hero {
     display: flex;
+    flex-direction: column;
     background-image: url(img/banner_3.jpg);
     background-size: cover;
     background-position: bottom;
@@ -49,7 +53,7 @@ nav a {
 
 .hero-content {
     color: white;
-    margin: auto;
+    margin-top: 5%;
     text-align: center;
 }
 
@@ -81,3 +85,74 @@ h3 {
 .footer-right {
     margin: auto;
 }
+
+
+
+.arrow{
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.arrow span{
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-bottom: 5px solid #ffffff;
+    border-right: 5px solid #ffffff;
+    transform: rotate(45deg);
+    margin: -10px;
+    animation: animate 2s infinite;
+}
+.arrow span:nth-child(2){
+    animation-delay: -0.2s;
+}
+.arrow span:nth-child(3){
+    animation-delay: -0.4s;
+}
+@keyframes animate {
+    0%{
+        opacity: 0;
+        transform: rotate(45deg) translate(-20px,-20px);
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        transform: rotate(45deg) translate(20px,20px);
+    }
+}
+
+
+
+
+
+
+
+/* 
+.liste-produits-fleche {
+    display: inline-block;
+    margin: auto;
+}
+
+.fleche-bas {
+        width: 0;
+        height: 0;
+        border-right: 16px solid transparent;
+        border-left: 16px solid transparent;
+        border-top: 20px solid #f7df6c;
+}
+
+@keyframes down{
+	0% {position:relative; top:0px; opacity: 0}
+	50% {position:relative; top:15px; opacity: 0.5}
+	100% {position:relative; top:30px; opacity: 1}
+
+}
+
+.fleche-bas{
+	animation: down 1s infinite linear alternate;
+	width: 3%;
+}
+*/
