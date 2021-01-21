@@ -154,6 +154,113 @@ h3 {
 }
 
 
+/* -------------------------------------------------------------------------- PAGE PRODUITS -------------------------------------------------------------------------- */
+
+main, .container {
+    height: 600px;
+}
+
+
+/* --------------------------------------------------------------------------- PAGE PANIER --------------------------------------------------------------------------- */
+
+/* Section récapitulatif du panier, avec la finalisation ou non de la commande */
+#panier {
+    width: 60%;
+    margin: auto;
+}
+
+.panier-titre {
+    margin-top: 5%;
+}
+
+.panier-sous-titre {
+    font-size: 1.5em;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: 3px solid purple;
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 10%;
+}
+
+#panier-total {
+    display: flex;
+    margin-top: 5%;
+}
+
+/* Formulaire de validation */
+#form-titre {
+    font-size: 1.5em;
+    margin-top: 5%;
+}
+
+.form-panier {
+    border: 1px solid black;
+    border-radius: 5px;
+    background: rgb(172, 172, 172);
+    padding: 1rem;
+    margin-bottom: 10%;
+    font-family: 'Oswald', sans-serif;
+}
+
+.form-panier label {
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 15px;
+}
+
+.form-panier input, .form-panier textarea {
+    width: 100%;
+    border: none;
+    background: white;
+}
+
+/* Bouton validation formulaire */
+.bouton-panier {
+    display: inline-block;
+    background: #e04d4d;
+    padding: 14px 0;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 8px;
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 5px;
+}
+
+
+/* ------------------------------------------------------------------------- PAGE CONFIRMATION ----------------------------------------------------------------------- */
+
+.hero-confirmation {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2em;
+    margin: auto;
+}
+
+.confirmation-bientot {
+    font-size: 1.5em;
+    margin: 4%;
+    text-transform: uppercase;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---------------------------------------------------------------------------------- TESTS -------------------------------------------------------------------------- */
 
 /*  Essaie flèche scroll bas 
 .liste-produits-fleche {
@@ -181,94 +288,3 @@ h3 {
 	width: 3%;
 }
 */
-
-
-
-/* ------------------------------------------------------------------------- PAGE PANIER ----------------------------------------------------------------------------- */
-
-/* Section récapitulatif du panier, avec la finalisation ou non de la commande */
-#panier {
-    width: 60%;
-    margin: auto;
-}
-
-.panier-titre {
-    margin-top: 5%;
-}
-
-.panier-sous-titre {
-    font-size: 1.5em;
-}
-
-table {
-    width: 100%;
-    text-align: center;
-    border-collapse: collapse;
-    border: 3px solid purple;
-}
-
-#form-titre {
-    font-size: 1.5em;
-    margin-top: 5%;
-}
-
-#form-total {
-    display: flex;
-    margin-top: 5%;
-}
-
-/* Formulaire de validation */
-.panier-form {
-    border: 1px solid black;
-    border-radius: 5px;
-    background: rgb(172, 172, 172);
-    padding: 1rem;
-    margin-bottom: 10%;
-}
-
-.panier-form label {
-    font-weight: 500;
-    text-transform: uppercase;
-    font-size: 15px;
-}
-
-.panier-form input, .panier-form textarea {
-    width: 100%;
-    border: none;
-    background: white;
-}
-
-/* Bouton validation formulaire */
-.bouton-panier {
-    display: inline-block;
-    background: #e04d4d;
-    padding: 14px 0;
-    color: white;
-    text-transform: uppercase;
-    cursor: pointer;
-    margin-top: 8px;
-    width: 100%;
-    border: 1px solid transparent;
-    border-radius: 5px;
-}
-
-
-/* ------------------------------------------------------------------------- PAGE PANIER ----------------------------------------------------------------------------- */
-
-main, .container {
-    height: 600px;
-}
-
-/* ------------------------------------------------------------------------- PAGE CONFIRMATION----------------------------------------------------------------------------- */
-
-.hero-confirmation {
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.2em;
-    margin: auto;
-}
-
-.confirmation-bientot {
-    font-size: 1.5em;
-    margin: 4%;
-    text-transform: uppercase;
-}
