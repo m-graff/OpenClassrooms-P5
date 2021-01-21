@@ -56,25 +56,24 @@ hr {
     margin-bottom: 2%;
 }
 
-h2 {
+.hero-sous-titre {
     font-size: 1.5em;
-    margin-bottom: 5%;
+    padding-bottom: 4%;
     font-family: 'Oswald', sans-serif;
     font-weight: 500;
+    width: 60%;
+    margin: auto;
 }
 
 .btn-produits {
-    margin: auto;
     text-decoration: none;
     background: #7f72f8;
     color: #fff!important;
     text-transform: uppercase;
     padding: 12px 28px 12px 28px;
-    font-size: 16px;
     border-radius: 40px;
     font-family: 'Oswald', sans-serif;
 }
-
 
 /* Flèche de défilement vers le bas */
 .arrow{
@@ -251,4 +250,25 @@ table {
     width: 100%;
     border: 1px solid transparent;
     border-radius: 5px;
+}
+
+
+/* ------------------------------------------------------------------------- PAGE PANIER ----------------------------------------------------------------------------- */
+
+main, .container {
+    height: 600px;
+}
+
+/* ------------------------------------------------------------------------- PAGE CONFIRMATION----------------------------------------------------------------------------- */
+
+.hero-confirmation {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2em;
+    margin: auto;
+}
+
+.confirmation-bientot {
+    font-size: 1.5em;
+    margin: 4%;
+    text-transform: uppercase;
 }
