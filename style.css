@@ -6,6 +6,10 @@ body {
     font-family: 'Federo', sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
 /* Header */
 nav {
     background-color:  #d0cbff;
@@ -128,6 +132,22 @@ h3 {
 .footer-right {
     margin: auto;
 }
+
+/* Footer icones réseaux sociaux */
+
+
+.footer-distributed .footer-center a {
+    display: inline-block;
+    font-size: 25px;
+    color: white;
+	width: 45px;
+    text-align: center;
+	margin-right: 5px;
+	cursor: pointer;
+    
+    
+}
+
 
 
 /*  Essaie flèche scroll bas 
