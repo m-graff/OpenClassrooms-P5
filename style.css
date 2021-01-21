@@ -6,19 +6,26 @@ body {
     font-family: 'Federo', sans-serif;
 }
 
-a {
-    text-decoration: none;
+a, a:hover, a:visited, a:active
+{
+	color:#000;
+	text-decoration:none;
 }
 
 /* Header */
 nav {
-    background-color:  #d0cbff;
+    background-color:  #37373d;
     height: 80px;
     display: flex;
 }
 
 nav a {
     margin: auto;
+}
+
+.panier-header i {
+    color: white;
+    font-size: 1.8em;
 }
 
 /* Hero Banner */ 
@@ -28,7 +35,7 @@ nav a {
     background-image: url(img/banner_3.jpg);
     background-size: cover;
     background-position: bottom;
-    height: 600px; 
+    height: 650px; 
 }
 
 .hero-content {
@@ -50,8 +57,10 @@ hr {
 }
 
 h2 {
-    font-size: 1.1em;
+    font-size: 1.5em;
     margin-bottom: 5%;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
 }
 
 .btn-produits {
@@ -63,7 +72,9 @@ h2 {
     padding: 12px 28px 12px 28px;
     font-size: 16px;
     border-radius: 40px;
+    font-family: 'Oswald', sans-serif;
 }
+
 
 /* Flèche de défilement vers le bas */
 .arrow{
@@ -108,34 +119,31 @@ h2 {
 }
 
 h3 {
+    font-size: 1.5em;
     margin-top: 5%;
     text-align: center;
 }
 
 /* Footer */
 .footer-distributed {
+    font-family: 'Oswald', sans-serif;
     display: flex;
-    background-color: #d0cbff;
+    background-color:  #37373d;
     height: 80px;
     width: 100%;
     justify-content: space-between;
 }
 
-.footer-left {
+.footer-left, .footer-center, .footer-right {
     margin: auto;
 }
 
-.footer-center {
-    margin: auto;
-}
-
-.footer-right {
-    margin: auto;
+.footer-left a, .footer-right a {
+    color: white;
+    font-size: 1.1em;
 }
 
 /* Footer icones réseaux sociaux */
-
-
 .footer-distributed .footer-center a {
     display: inline-block;
     font-size: 25px;
@@ -144,8 +152,6 @@ h3 {
     text-align: center;
 	margin-right: 5px;
 	cursor: pointer;
-    
-    
 }
 
 
