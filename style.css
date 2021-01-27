@@ -133,14 +133,54 @@ hr {
 
 /* Section liste des produits avec les différentes cards */
 #liste-produits {
-    height: 500px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    height: auto;
+    width: 40%;
+    padding: 5%;
 }
 
-h3 {
+#titre-produits-gamme {
     font-size: 1.5em;
-    margin-top: 5%;
     text-align: center;
 }
+
+
+/* --------------------------------------------------------------------------------- CSS JS -------------------------------------------------------------------------- */
+
+.produit-content {
+    margin: 10%;
+    
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(209, 209, 208);
+}
+
+.nom-produit {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding-left: 5%;
+}
+
+.description-produit {
+    font-family: 'Oswald', sans-serif;
+    font-weight: normal;
+    color: rgb(146, 141, 141);
+    padding-left: 5%;
+}
+
+.prix-produit {
+    font-weight: bold;
+    padding-left: 5%;
+}
+
+.bouton-details {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+}
+
+
 
 /* Footer */
 .footer-distributed {
@@ -279,6 +319,11 @@ table {
 
 
 
+
+
+
+
+
 /* ---------------------------------------------------------------------------------- TESTS -------------------------------------------------------------------------- */
 
 /*  Essaie flèche scroll bas 
@@ -305,5 +350,14 @@ table {
 .fleche-bas{
 	animation: down 1s infinite linear alternate;
 	width: 3%;
+}
+*/
+
+/* Description produits JS
+.description-produit {
+    font-family: 'Oswald', sans-serif;
+    font-weight: normal;
+    color: rgb(146, 141, 141);
+    padding-left: 5%;
 }
 */
