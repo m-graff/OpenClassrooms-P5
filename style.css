@@ -133,28 +133,35 @@ hr {
 
 /* Section liste des produits avec les différentes cards */
 #liste-produits {
-    display: flex;
-    flex-direction: column;
     margin: auto;
-    height: auto;
     width: 40%;
-    padding: 5%;
 }
 
 #titre-produits-gamme {
     font-size: 1.5em;
     text-align: center;
+    margin-top: 10%;
+}
+
+#cartes-produits {
+    
 }
 
 
 /* --------------------------------------------------------------------------------- CSS JS -------------------------------------------------------------------------- */
+.image-produit {
+    width: 100%;
+}
+
 
 .produit-content {
     margin: 10%;
-    
     display: flex;
     flex-direction: column;
     background-color: rgb(209, 209, 208);
+    box-shadow: 8px 8px 0px #aaa;
+
+    box-sizing: border-box;
 }
 
 .nom-produit {
