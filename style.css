@@ -134,7 +134,9 @@ hr {
 /* Section liste des produits avec les différentes cards */
 #liste-produits {
     margin: auto;
-    width: 40%;
+    width: 60%;
+    
+    
 }
 
 #titre-produits-gamme {
@@ -144,25 +146,34 @@ hr {
 }
 
 #cartes-produits {
-    
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
 }
 
 
-/* --------------------------------------------------------------------------------- CSS JS -------------------------------------------------------------------------- */
+
+
+/* ------------------------------------------------------------------------------ CSS JS INDEX ----------------------------------------------------------------------- */
 .image-produit {
     width: 100%;
 }
 
-
 .produit-content {
-    margin: 10%;
-    display: flex;
-    flex-direction: column;
+    width: 30%;
+    margin: 5%;
     background-color: rgb(209, 209, 208);
     box-shadow: 8px 8px 0px #aaa;
-
     box-sizing: border-box;
+    display: flex;
+    transition: transform 300ms;
+
+    overflow: hidden;
 }
+
+.produit-content:hover {
+    transform: scale(1.05);
+  }
 
 .nom-produit {
     font-size: 1.5em;
@@ -180,13 +191,21 @@ hr {
 .prix-produit {
     font-weight: bold;
     padding-left: 5%;
+    padding-right: 5%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .bouton-details {
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
+    
 }
 
+
+/* élément bouton avant suppresion et remplacement par une div
+<button type="button" class="bouton-details">Voir le produit</button>
+*/
 
 
 /* Footer */
@@ -223,7 +242,53 @@ hr {
 /* -------------------------------------------------------------------------- PAGE PRODUITS -------------------------------------------------------------------------- */
 
 main, .container {
-    height: 600px;
+    
+    
+}
+
+#produit {
+    margin: 5%;
+}
+
+/* -------------------------------------------------------------------------- CSS JS PRODUIT ------------------------------------------------------------------------- */
+
+.produit-container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    background-color: rgb(209, 209, 208);
+    box-shadow: 8px 8px 0px #aaa;
+}
+
+.produit-image {
+    width: 100%;
+    
+}
+
+.produit-titre {
+    font-size: 2.5em;
+    font-weight: bold;
+    padding-left: 5%;
+}
+
+.produit-description {
+    font-family: 'Oswald', sans-serif;
+    font-weight: normal;
+    color: rgb(146, 141, 141);
+    padding-left: 5%;
+}
+
+.produit-prix {
+    font-weight: bold;
+    padding-left: 5%;
+}
+
+.produit-fiche {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    padding-left: 5%;
+    padding-bottom: 5%;
 }
 
 

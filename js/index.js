@@ -40,12 +40,13 @@ getCamera(url).then(cameras => {
                     <img class="image-produit" src="${camera.imageUrl}" alt="photo de l'appareil">
                     <div class="titre-produit">
                         <h3 class="nom-produit">${camera.name}</h3>
-                        <p class="description-produit">${camera.description}</p>
                     </div>
                     <div class="prix-produit">
                         <p>${camera.price/100},00 €</p>
+                        <p class="bouton-details">Voir le produit</p>
                     </div>
-                    <button type="button" class="bouton-details">Voir le produit</button>
+                    
+                    
                 </a>
             </article>
         `
