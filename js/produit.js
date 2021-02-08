@@ -1,21 +1,3 @@
-// Exécute un appel AJAX GET
-// Prend en paramètres l'URL cible et la fonction callback appelée en cas de succès
-function ajaxGet(url, callback) {
-    var req = new XMLHttpRequest();
-    req.open("GET", url);
-    req.addEventListener("load", function () {
-        if (req.status >= 200 && req.status < 400) {
-            // Appelle la fonction callback en lui passant la réponse de la requête
-            callback(req.responseText);
-        } else {
-            console.error(req.status + " " + req.statusText + " " + url);
-        }
-    });
-    req.addEventListener("error", function () {
-        console.error("Erreur réseau avec l'URL " + url);
-    });
-    req.send(null);
-}
 
 
 
@@ -34,6 +16,7 @@ async function getCamera(url) {
 const queryString = window.location.search;
 const cameraId = new URLSearchParams(queryString).get("product");
 console.log(cameraId);
+// Appel sur l'API pour récupérer le détail du produit
 const url = "https://oc-p5-api.herokuapp.com/api/cameras/" + cameraId;
 
 
@@ -51,20 +34,20 @@ getCamera(url).then(camera => {
             <p class="produit-prix">${camera.price/100},00 €</p>
 
             <form class="produit-fiche">
-                <fieldste>
+                <fieldset>
                     <label for="objectif">Objectif</label>
                     <select name="objectif" id="objectif">
-                        <option value="0">${camera.lenses}</option>
-                        <option value="1">${camera.lenses}
+                        <option value="">-- Sélectionnez une lentille --</option>
+                        ${getLensesOptions(camera)}
                         </option>
                     </select>
                 </fieldset>
                 <fieldset>
-                    <label for="quantite>Quantité, AJOUT VARIABLE ?</label>
-                    <input type="number" name="quantite" id="quantite" min"1">
+                    <label for="quantite">Quantité</label>
+                    <input type="number" name="quantite" id="quantite" min="1">
                 </fieldset>
                 <div class="produit-fiche-boutton">
-                    <button class="produit-bouton" type="submit" aria-label="Ajouter au panier">Ajouter au panier</button>
+                    <button class="produit-bouton" type="submit" aria-label="Ajouter au panier" id=${camera._id}>Ajouter au panier</button>
                     <a class="produit-bouton-retour" href="index.html">Retour à l'accueil</a>
                 </div>
             </form>
@@ -72,7 +55,22 @@ getCamera(url).then(camera => {
     `
 });
 
+/* fonction options lentilles
+// ajout d'une div dans la page produit.html pour passer par getElementById lensesOptions ?
+for(let i = 0; i < options.length; i++) {
+    lensesOptions += 'option id="lenses-options">' + lenses [i] + '</option>';
+}
+*/
 
+// Fonction affichage des différentes options de lentilles
+function getLensesOptions(camera) {
+    lenses = camera.lenses;
+    lensesOptions = "";
+    for (let i = 0; i < lenses.length; i++) {
+        lensesOptions += '<option id="lenses-options" value="' + lenses[i] + '">' + lenses[i] + '</option>'
+    }
+    return lensesOptions
+}
 
 
 

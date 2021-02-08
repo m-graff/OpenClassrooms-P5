@@ -135,8 +135,6 @@ hr {
 #liste-produits {
     margin: auto;
     width: 60%;
-    
-    
 }
 
 #titre-produits-gamme {
@@ -151,6 +149,11 @@ hr {
     justify-content: center;
 }
 
+@media screen and (max-width: 1200px) {
+    #cartes-produits {
+        flex-flow: column wrap;
+    }
+}
 
 
 
@@ -160,32 +163,34 @@ hr {
 }
 
 .produit-content {
-    width: 30%;
+    width: 40%;
     margin: 5%;
     background-color: rgb(209, 209, 208);
     box-shadow: 8px 8px 0px #aaa;
     box-sizing: border-box;
     display: flex;
     transition: transform 300ms;
-
     overflow: hidden;
+}
+
+@media screen and (max-width: 1200px) {
+    .produit-content {
+        width: 70%;
+        margin: auto;
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
 }
 
 .produit-content:hover {
     transform: scale(1.05);
-  }
+}
 
 .nom-produit {
     font-size: 1.5em;
     font-weight: bold;
     padding-left: 5%;
-}
-
-.description-produit {
-    font-family: 'Oswald', sans-serif;
-    font-weight: normal;
-    color: rgb(146, 141, 141);
-    padding-left: 5%;
+    letter-spacing: 0.3vh;
 }
 
 .prix-produit {
@@ -194,12 +199,15 @@ hr {
     padding-right: 5%;
     display: flex;
     justify-content: space-between;
+    letter-spacing: 0.1vh;
+    align-items: center;
 }
 
 .bouton-details {
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
-    
+    font-weight: normal;
+    line-height: 1;
 }
 
 
