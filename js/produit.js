@@ -1,8 +1,4 @@
-
-
-
 // ------ Début implémentation JS produit -----------
-
 
 // Création de la constante pour récupérer les données de l'API
 const produit = document.getElementById("produit");
@@ -19,6 +15,15 @@ console.log(cameraId);
 // Appel sur l'API pour récupérer le détail du produit
 const url = "https://oc-p5-api.herokuapp.com/api/cameras/" + cameraId;
 
+// Fonction affichage des différentes options de lentilles
+function getLensesOptions(camera) {
+    lenses = camera.lenses;
+    lensesOptions = "";
+    for (let i = 0; i < lenses.length; i++) {
+        lensesOptions += '<option id="lenses-options" value="' + lenses[i] + '">' + lenses[i] + '</option>'
+    };
+    return lensesOptions;
+};
 
 // Récupération des produits 
 getCamera(url).then(camera => {
@@ -33,10 +38,10 @@ getCamera(url).then(camera => {
             <p class="produit-description">${camera.description}</p>
             <p class="produit-prix">${camera.price/100},00 €</p>
 
-            <form class="produit-fiche">
+            <form id="produit-form">
                 <fieldset>
                     <label for="objectif">Objectif</label>
-                    <select name="objectif" id="objectif">
+                    <select name="objectif" id="objectif" required>
                         <option value="">-- Sélectionnez une lentille --</option>
                         ${getLensesOptions(camera)}
                         </option>
@@ -44,33 +49,35 @@ getCamera(url).then(camera => {
                 </fieldset>
                 <fieldset>
                     <label for="quantite">Quantité</label>
-                    <input type="number" name="quantite" id="quantite" min="1">
+                    <input type="number" name="quantite" id="quantite" min="1" required>
                 </fieldset>
-                <div class="produit-fiche-boutton">
+                <div id="produit-form-boutton">
                     <button class="produit-bouton" type="submit" aria-label="Ajouter au panier" id=${camera._id}>Ajouter au panier</button>
                     <a class="produit-bouton-retour" href="index.html">Retour à l'accueil</a>
                 </div>
             </form>
         </article>
     `
+    // Try ajout d'un évènement de type submit directement sur le form - localStorage
+        document.getElementById("produit-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+            var panierData = { 
+                objectif : document.getElementById("objectif").value,
+                quantite : document.getElementById("quantite").value
+            };
+            var panierData = JSON.stringify(panierData);
+
+            var panier = "panier";
+            var panierID = localStorage.lenght+1;
+            localStorage[panier + panierID] = panierData;
+
+
+        localStorage.setItem("product", camera);
+        alert("Produit sélectionné !");
+    });
 });
 
-/* fonction options lentilles
-// ajout d'une div dans la page produit.html pour passer par getElementById lensesOptions ?
-for(let i = 0; i < options.length; i++) {
-    lensesOptions += 'option id="lenses-options">' + lenses [i] + '</option>';
-}
-*/
-
-// Fonction affichage des différentes options de lentilles
-function getLensesOptions(camera) {
-    lenses = camera.lenses;
-    lensesOptions = "";
-    for (let i = 0; i < lenses.length; i++) {
-        lensesOptions += '<option id="lenses-options" value="' + lenses[i] + '">' + lenses[i] + '</option>'
-    }
-    return lensesOptions
-}
 
 
 

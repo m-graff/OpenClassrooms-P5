@@ -292,7 +292,7 @@ main, .container {
     padding-left: 5%;
 }
 
-.produit-fiche {
+#produit-form {
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
     padding-left: 5%;
