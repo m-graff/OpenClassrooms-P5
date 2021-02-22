@@ -62,16 +62,21 @@ getCamera(url).then(camera => {
         document.getElementById("produit-form").addEventListener("submit", function (e) {
         e.preventDefault();
 
-            var panierData = { 
-                objectif : document.getElementById("objectif").value,
-                quantite : document.getElementById("quantite").value
-            };
-            var panierData = JSON.stringify(panierData);
-
-            var panier = "panier";
-            var panierID = localStorage.lenght+1;
-            localStorage[panier + panierID] = panierData;
-
+        // Déclaration de la variable localStorage
+        let produitLocalStorage = JSON.parse(localStorage.getItem("panier"));
+        // JSON.parse
+        console.log(produitLocalStorage);
+        // S'il y a déjà des produits stockés dans le localStorage 
+        if (produitLocalStorage) {
+            produitLocalStorage.push(camera);
+            localStorage.setItem("panier", JSON.stringify(produitLocalStorage));
+            console.log(produitLocalStorage);
+        } else { // Si le localStorage est vide 
+            produitLocalStorage = [];
+            produitLocalStorage.push(camera);
+            localStorage.setItem("panier", JSON.stringify(produitLocalStorage));
+            console.log(produitLocalStorage);
+        }
 
         localStorage.setItem("product", camera);
         alert("Produit sélectionné !");
