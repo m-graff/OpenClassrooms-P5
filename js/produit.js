@@ -62,10 +62,14 @@ getCamera(url).then(camera => {
         document.getElementById("produit-form").addEventListener("submit", function (e) {
         e.preventDefault();
 
+        console.log(e.target.objectif.value);
+        console.log(e.target.quantite.value);
+
         // Déclaration de la variable localStorage
         let produitLocalStorage = JSON.parse(localStorage.getItem("panier"));
-        // JSON.parse
-        console.log(produitLocalStorage);
+        // Déclaration objectif + quantite
+        camera["objectif"] = e.target.objectif.value;
+        camera["quantite"] = e.target.quantite.value;
         // S'il y a déjà des produits stockés dans le localStorage 
         if (produitLocalStorage) {
             produitLocalStorage.push(camera);
