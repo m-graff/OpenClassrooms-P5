@@ -70,15 +70,20 @@ getCamera(url).then(camera => {
         // Déclaration objectif + quantite
         camera["objectif"] = e.target.objectif.value;
         camera["quantite"] = e.target.quantite.value;
-        // S'il y a déjà des produits stockés dans le localStorage 
-        if (produitLocalStorage) {
+
+        // Essai refactorisation : fonction d'ajout produit dans le localStorage
+        const ajoutProduitLocalStorage = () => {
             produitLocalStorage.push(camera);
             localStorage.setItem("panier", JSON.stringify(produitLocalStorage));
+        }
+
+        // S'il y a déjà des produits stockés dans le localStorage 
+        if (produitLocalStorage) {
+            ajoutProduitLocalStorage();
             console.log(produitLocalStorage);
         } else { // Si le localStorage est vide 
             produitLocalStorage = [];
-            produitLocalStorage.push(camera);
-            localStorage.setItem("panier", JSON.stringify(produitLocalStorage));
+            ajoutProduitLocalStorage();
             console.log(produitLocalStorage);
         }
 
