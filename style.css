@@ -325,9 +325,25 @@ table {
     margin-bottom: 10%;
 }
 
+thead {
+    font-size: 1.1em;
+    background-color: rgb(228, 226, 225);
+}
+
+tbody {
+    font-size: 0.9em;
+}
+
+.container-recapitulatif {
+    vertical-align: middle;
+    padding: 30px;
+}
+
 #panier-total {
     display: flex;
     margin-top: 5%;
+    font-size: 1.1em;
+    padding: 5%;
 }
 
 /* Formulaire de validation */
@@ -370,6 +386,26 @@ table {
     border: 1px solid transparent;
     border-radius: 5px;
 }
+
+
+/* --------------------------------------------------------------------------- CSS JS PANIER ------------------------------------------------------------------------- */
+
+.container-recapitulatif {
+    
+}
+
+
+/* Panier avant modif
+ `
+        <div class="container-recapitulatif">
+            <div><span class="gras">Quantité :</span> ${produitLocalStorage[i].quantite} <span class="gras"> - Produit : </span> ${produitLocalStorage[i].name} - ${produitLocalStorage[i].objectif}</div>
+            <div>
+                <div class="prix-produit"><span class="gras">${produitLocalStorage[i].price}€</span></div> 
+                <div><button class="btn-supprimer"> supprimer </button></div>
+            </div>
+        </div>   
+        ` ;
+*/
 
 
 /* ------------------------------------------------------------------------- PAGE CONFIRMATION ----------------------------------------------------------------------- */
