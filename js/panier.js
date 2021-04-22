@@ -62,7 +62,8 @@ document.getElementById("panier-prix").innerHTML = sommePanier;
 
 
 
-// --- TRY --- Bouton supprimer un article
+// --- TRY --- Bouton supprimer un article --- TRY ---  // 
+
 // Bouton supprimer un article
 const deleteItem = document.querySelectorAll(".btn-supprimer");
 deleteItem.forEach((btn, i) => {
@@ -70,17 +71,30 @@ deleteItem.forEach((btn, i) => {
         deleteItemSelected(i);
     });
 });
-
     // Suppression de l'article sélectionné dans le localStorage
     function deleteItemSelected(index) {
         produitLocalStorage.splice(index, 1);
         localStorage.setItem('panier', JSON.stringify(produitLocalStorage));
-
+            // Alerte suppresion d'un produit et refresh de la page en cas de validation
+            confirm("Etes-vous sur de vouloir supprimer ce produit du panier ?");
+            document.location.reload();
         if (produitLocalStorage.length === 0) {
             localStorage.removeItem('panier');
         }
         structurePanierProduit(produitLocalStorage);
     }
-   
 
-    /*let index = e.target.classList[1].slice();*/
+
+
+/*let index = e.target.classList[1].slice();*/
+
+/* function testAlert () {
+
+    var result = confirm("Vous êtes sur le point de supprimer ce produit. Voulez-vous le supprimer du panier ?");
+
+    if (result) {
+        alert("Produit supprimé !")
+    } else {
+        alert("Continuer mes achats !")
+    }
+} */

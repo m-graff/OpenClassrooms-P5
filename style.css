@@ -249,11 +249,6 @@ hr {
 
 /* -------------------------------------------------------------------------- PAGE PRODUITS -------------------------------------------------------------------------- */
 
-main, .container {
-    
-    
-}
-
 #produit {
     margin: 5%;
 }
@@ -325,6 +320,11 @@ table {
     margin-bottom: 10%;
 }
 
+td, th {
+    border: 1px solid black;
+    padding: 1%;
+}
+
 thead {
     font-size: 1.1em;
     background-color: rgb(228, 226, 225);
@@ -334,17 +334,15 @@ tbody {
     font-size: 0.9em;
 }
 
-.container-recapitulatif {
-    vertical-align: middle;
-    padding: 30px;
+tfoot {
+    font-size: 1.1em;
+    font-weight: bold;
 }
 
 #panier-total {
-    display: flex;
-    margin-top: 5%;
-    font-size: 1.1em;
-    padding: 5%;
+    padding: 2%;
 }
+
 
 /* Formulaire de validation */
 #form-titre {
@@ -390,9 +388,7 @@ tbody {
 
 /* --------------------------------------------------------------------------- CSS JS PANIER ------------------------------------------------------------------------- */
 
-.container-recapitulatif {
-    
-}
+
 
 
 /* Panier JS  avant modif
@@ -421,14 +417,6 @@ tbody {
     margin: 4%;
     text-transform: uppercase;
 }
-
-
-
-
-
-
-
-
 
 
 
