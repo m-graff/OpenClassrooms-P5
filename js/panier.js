@@ -39,8 +39,8 @@ if (produitLocalStorage === null || produitLocalStorage == 0) {
         panierProduit.innerHTML = structurePanierProduit;
 }
 
-// --- TRY --- : Affichage du montant total du panier
 
+// --- TRY --- : Affichage du montant total du panier --- TRY --- //
 // Déclaration de la variable du prix total
 let prixTotalPanier = [];
 
@@ -62,10 +62,25 @@ document.getElementById("panier-prix").innerHTML = sommePanier;
 
 
 
+// --- TRY --- Bouton supprimer un article
+// Bouton supprimer un article
+const deleteItem = document.querySelectorAll(".btn-supprimer");
+deleteItem.forEach((btn, i) => {
+    btn.addEventListener('click', e => {
+        deleteItemSelected(i);
+    });
+});
 
+    // Suppression de l'article sélectionné dans le localStorage
+    function deleteItemSelected(index) {
+        produitLocalStorage.splice(index, 1);
+        localStorage.setItem('panier', JSON.stringify(produitLocalStorage));
 
+        if (produitLocalStorage.length === 0) {
+            localStorage.removeItem('panier');
+        }
+        structurePanierProduit(produitLocalStorage);
+    }
+   
 
-/* try
-let test = sommePanier;
-document.getElementById("panier-prix").value = test;
-*/
+    /*let index = e.target.classList[1].slice();*/

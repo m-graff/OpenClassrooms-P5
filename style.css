@@ -395,7 +395,7 @@ tbody {
 }
 
 
-/* Panier avant modif
+/* Panier JS  avant modif
  `
         <div class="container-recapitulatif">
             <div><span class="gras">Quantité :</span> ${produitLocalStorage[i].quantite} <span class="gras"> - Produit : </span> ${produitLocalStorage[i].name} - ${produitLocalStorage[i].objectif}</div>
