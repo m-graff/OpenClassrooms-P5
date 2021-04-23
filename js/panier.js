@@ -57,8 +57,8 @@ const reducer = (accumulator, currentValue) => accumulator + currentValue;
 const sommePanier = prixTotalPanier.reduce(reducer, 0);
 console.log(sommePanier);
 
-// Affichage du résultat dans la page html
-document.getElementById("panier-prix").innerHTML = sommePanier;
+// Affichage du résultat et sa valeur en euro avec l'objet Intl.NumberFormat dans la page html 
+document.getElementById("panier-prix").innerHTML = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(sommePanier); 
 
 
 
@@ -73,28 +73,13 @@ deleteItem.forEach((btn, i) => {
 });
     // Suppression de l'article sélectionné dans le localStorage
     function deleteItemSelected(index) {
+        // Alerte suppresion d'un produit et refresh de la page en cas de validation
+        if (confirm("Etes-vous sur de vouloir supprimer ce produit du panier ?")) {
         produitLocalStorage.splice(index, 1);
         localStorage.setItem('panier', JSON.stringify(produitLocalStorage));
-            // Alerte suppresion d'un produit et refresh de la page en cas de validation
-            confirm("Etes-vous sur de vouloir supprimer ce produit du panier ?");
             document.location.reload();
-        if (produitLocalStorage.length === 0) {
-            localStorage.removeItem('panier');
-        }
-        structurePanierProduit(produitLocalStorage);
+        structurePanierProduit(produitLocalStorage);}
     }
 
 
 
-/*let index = e.target.classList[1].slice();*/
-
-/* function testAlert () {
-
-    var result = confirm("Vous êtes sur le point de supprimer ce produit. Voulez-vous le supprimer du panier ?");
-
-    if (result) {
-        alert("Produit supprimé !")
-    } else {
-        alert("Continuer mes achats !")
-    }
-} */
