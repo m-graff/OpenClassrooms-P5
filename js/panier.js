@@ -28,7 +28,7 @@ if (produitLocalStorage === null || produitLocalStorage == 0) {
         <tr class="container-recapitulatif">
             <td class="recap-produit"> ${produitLocalStorage[i].name}</td>
             <td class="recap-objectif"> ${produitLocalStorage[i].objectif}</td>
-            <td class="recap-quantite"> ${produitLocalStorage[i].quantite}</td>
+            <td class="recap-quantite"><button class="minus">-</button> ${produitLocalStorage[i].quantite} <button class="plus">+</button></td>
             <td class="recap-prix">${produitLocalStorage[i].price/100}€</td> 
             <td><button class="btn-supprimer"><i class="fas fa-trash-alt"></i></button></td>
         </tr>   
@@ -39,8 +39,9 @@ if (produitLocalStorage === null || produitLocalStorage == 0) {
         panierProduit.innerHTML = structurePanierProduit;
 }
 
+// ---------------------------------------------------------------------------------//
 
-// --- TRY --- : Affichage du montant total du panier --- TRY --- //
+// Affichage du montant total du panier //
 // Déclaration de la variable du prix total
 let prixTotalPanier = [];
 
@@ -60,9 +61,7 @@ console.log(sommePanier);
 // Affichage du résultat et sa valeur en euro avec l'objet Intl.NumberFormat dans la page html 
 document.getElementById("panier-prix").innerHTML = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(sommePanier); 
 
-
-
-// --- TRY --- Bouton supprimer un article --- TRY ---  // 
+// ------------------------------------------------------------------------- // 
 
 // Bouton supprimer un article
 const deleteItem = document.querySelectorAll(".btn-supprimer");
@@ -80,6 +79,9 @@ deleteItem.forEach((btn, i) => {
             document.location.reload();
         structurePanierProduit(produitLocalStorage);}
     }
+
+// -----------------------------------------------------------------------------//
+
 
 
 
