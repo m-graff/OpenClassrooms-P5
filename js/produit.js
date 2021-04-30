@@ -69,9 +69,9 @@ getCamera(url).then(camera => {
         let produitLocalStorage = JSON.parse(localStorage.getItem("panier"));
         // Déclaration objectif + quantite
         camera["objectif"] = e.target.objectif.value;
-        camera["quantite"] = e.target.quantite.value;
+        camera["quantite"] = parseInt(e.target.quantite.value);
 
-        // Essai refactorisation : fonction d'ajout produit dans le localStorage
+        // Essai refactorisation : fonction d'ajout produit dans le localStorage --- A MODIFIER ---
         const ajoutProduitLocalStorage = () => {
             produitLocalStorage.push(camera);
             localStorage.setItem("panier", JSON.stringify(produitLocalStorage));

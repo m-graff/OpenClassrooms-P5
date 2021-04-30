@@ -5,10 +5,29 @@ let produitLocalStorage = JSON.parse(localStorage.getItem("panier"));
 console.log(produitLocalStorage);
 
 
+// On crée un objet final destiné à accueillir notre regroupement
+const produitObject = {};
+// On itère sur notre tableau de base
+for (let i = 0; i < produitLocalStorage.length; i++) {
+  // On extrait l'id de chaque produit car c'est sur cet id que l'on va faire notre regroupement
+  const id = produitLocalStorage[i]._id + produitLocalStorage[i].objectif;
+  // Si l'id n'existe pas dans notre objet final, on l'ajoute
+  if (!produitObject[id]) {
+      produitObject[id] = produitLocalStorage[i];
+  } else {
+    //Sinon, on incrémente seulement le compteur
+    produitObject[id].quantite += parseInt(produitLocalStorage[i].quantite);
+  }
+} 
+console.log(produitObject);
+
 
 // Affichage des produits du localStorage dans le panier
 const panierProduit = document.querySelector("#panier-contenu");
 let structurePanierProduit = [];
+
+// Constante qui contient les valeurs de notre objet
+const produitValues = Object.values(produitObject);
 
 // Si le panier est vide : afficher le panier vide 
 if (produitLocalStorage === null || produitLocalStorage == 0) {
@@ -21,15 +40,17 @@ if (produitLocalStorage === null || produitLocalStorage == 0) {
     panierProduit.innerHTML = panierVide;
     console.log(panierProduit);
 } else { // Si le panier n'est pas vide, afficher les produits du localStorage
-    for (let i = 0; i < produitLocalStorage.length; i++) {
+
+    // Boucle sur les valeurs (produitValues)
+    for (let i = 0; i < produitValues.length; i++) {
         structurePanierProduit = structurePanierProduit + 
         
         `
         <tr class="container-recapitulatif">
-            <td class="recap-produit"> ${produitLocalStorage[i].name}</td>
-            <td class="recap-objectif"> ${produitLocalStorage[i].objectif}</td>
-            <td class="recap-quantite"><button class="minus">-</button> ${produitLocalStorage[i].quantite} <button class="plus">+</button></td>
-            <td class="recap-prix">${produitLocalStorage[i].price/100}€</td> 
+            <td class="recap-produit"> ${produitValues[i].name}</td>
+            <td class="recap-objectif"> ${produitValues[i].objectif}</td>
+            <td class="recap-quantite"><button class="minus">-</button> ${produitValues[i].quantite} <button class="plus">+</button></td>
+            <td class="recap-prix">${(produitValues[i].price* produitValues[i].quantite) /100}€</td> 
             <td><button class="btn-supprimer"><i class="fas fa-trash-alt"></i></button></td>
         </tr>   
         ` ;
@@ -46,8 +67,8 @@ if (produitLocalStorage === null || produitLocalStorage == 0) {
 let prixTotalPanier = [];
 
 // Récupération des données de prix dans le localStorage
-for (let j = 0; j < produitLocalStorage.length; j++) {
-    let prixProduitsPanier = produitLocalStorage[j].price/100;
+for (let j = 0; j < produitValues.length; j++) {
+    let prixProduitsPanier = (produitValues[j].price * produitValues[j].quantite)/100;
     // Ajout des données de prix dans la variable du prix total du panier
     prixTotalPanier.push(prixProduitsPanier);
     console.log(prixTotalPanier);
@@ -81,7 +102,3 @@ deleteItem.forEach((btn, i) => {
     }
 
 // -----------------------------------------------------------------------------//
-
-
-
-
