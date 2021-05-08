@@ -58,55 +58,46 @@ getCamera(url).then(camera => {
             </form>
         </article>
     `
-    // Try ajout d'un évènement de type submit directement sur le form - localStorage
-        document.getElementById("produit-form").addEventListener("submit", function (e) {
-        e.preventDefault();
 
-        console.log(e.target.objectif.value);
-        console.log(e.target.quantite.value);
-
+    // Ajout d'un évènement de type submit directement sur le form - localStorage
+    document.getElementById("produit-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    
         // Déclaration de la variable localStorage
         let produitLocalStorage = JSON.parse(localStorage.getItem("panier"));
+
+        // Initialisation de la variable produitLocalStorage dans le cas où le localStorage est vide
+        if (!produitLocalStorage) {
+            produitLocalStorage = [];
+        }
+
         // Déclaration objectif + quantite
         camera["objectif"] = e.target.objectif.value;
         camera["quantite"] = parseInt(e.target.quantite.value);
 
-        // Essai refactorisation : fonction d'ajout produit dans le localStorage --- A MODIFIER ---
+        // Fonction d'ajout prouit dans le localStorage
         const ajoutProduitLocalStorage = () => {
-            produitLocalStorage.push(camera);
             localStorage.setItem("panier", JSON.stringify(produitLocalStorage));
-        }
-
-        // S'il y a déjà des produits stockés dans le localStorage 
-        if (produitLocalStorage) {
-            ajoutProduitLocalStorage();
-            console.log(produitLocalStorage);
-        } else { // Si le localStorage est vide 
-            produitLocalStorage = [];
-            ajoutProduitLocalStorage();
             console.log(produitLocalStorage);
         }
 
-        localStorage.setItem("product", camera);
-        alert("Produit sélectionné !");
-    });
+        // Création de l'algorithme regroupant les produits
+        let productFound = false;
+        for (let i = 0; i < produitLocalStorage.length; i++) {
+            // Si l'id de la camera existe déjà dans le localStorage, on l'incrémente
+            if (produitLocalStorage[i]._id === camera._id && produitLocalStorage[i].objectif === camera.objectif) {
+                produitLocalStorage[i].quantite += 1;
+                productFound = true;
+                ajoutProduitLocalStorage();
+                console.log(produitLocalStorage);
+            }
+        }
+        // Si le produit n'a pas été trouvé, on l'ajoute au localStorage
+        if (!productFound) {
+            produitLocalStorage.push(camera);
+            ajoutProduitLocalStorage();
+            console.log(produitLocalStorage);
+        }
+    })
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 

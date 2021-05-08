@@ -1,13 +1,12 @@
-// ------ Début implémentation JS produit -----------
+// ------ Début implémentation JS panier -----------
 
 // Récupération des données du localStorage 
 let produitLocalStorage = JSON.parse(localStorage.getItem("panier"));
 console.log(produitLocalStorage);
 
-
-// On crée un objet final destiné à accueillir notre regroupement
+//Création d'un objet final destiné à accueillir le regroupement de produits
 const produitObject = {};
-// On itère sur notre tableau de base
+// Itération sur notre tableau de base
 for (let i = 0; i < produitLocalStorage.length; i++) {
   // On extrait l'id de chaque produit car c'est sur cet id que l'on va faire notre regroupement
   const id = produitLocalStorage[i]._id + produitLocalStorage[i].objectif;
@@ -102,3 +101,4 @@ deleteItem.forEach((btn, i) => {
     }
 
 // -----------------------------------------------------------------------------//
+/* const produitLocalStorage = produitValues */ 
