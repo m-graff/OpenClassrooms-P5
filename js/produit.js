@@ -98,6 +98,8 @@ getCamera(url).then(camera => {
             ajoutProduitLocalStorage();
             console.log(produitLocalStorage);
         }
+        localStorage.setItem("product", camera);
+        alert("Produit sélectionné !");
     })
 });
  
