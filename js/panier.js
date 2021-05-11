@@ -4,29 +4,12 @@
 let produitLocalStorage = JSON.parse(localStorage.getItem("panier"));
 console.log(produitLocalStorage);
 
-//Création d'un objet final destiné à accueillir le regroupement de produits
-const produitObject = {};
-// Itération sur notre tableau de base
-for (let i = 0; i < produitLocalStorage.length; i++) {
-  // On extrait l'id de chaque produit car c'est sur cet id que l'on va faire notre regroupement
-  const id = produitLocalStorage[i]._id + produitLocalStorage[i].objectif;
-  // Si l'id n'existe pas dans notre objet final, on l'ajoute
-  if (!produitObject[id]) {
-      produitObject[id] = produitLocalStorage[i];
-  } else {
-    //Sinon, on incrémente seulement le compteur
-    produitObject[id].quantite += parseInt(produitLocalStorage[i].quantite);
-  }
-} 
-console.log(produitObject);
-
-
 // Affichage des produits du localStorage dans le panier
 const panierProduit = document.querySelector("#panier-contenu");
 let structurePanierProduit = [];
 
 // Constante qui contient les valeurs de notre objet
-const produitValues = Object.values(produitObject);
+const produitValues = produitLocalStorage;
 
 // Si le panier est vide : afficher le panier vide 
 if (produitLocalStorage === null || produitLocalStorage == 0) {
@@ -48,7 +31,11 @@ if (produitLocalStorage === null || produitLocalStorage == 0) {
         <tr class="container-recapitulatif">
             <td class="recap-produit"> ${produitValues[i].name}</td>
             <td class="recap-objectif"> ${produitValues[i].objectif}</td>
-            <td class="recap-quantite"><button class="minus">-</button> ${produitValues[i].quantite} <button class="plus">+</button></td>
+            <td id="recap-quantite">
+            <input type="button" value="-" id="moins" onclick="minus()" />
+            ${produitValues[i].quantite} 
+            <input type="button" value="+" id="plus" onclick="plus()" />
+            </td>
             <td class="recap-prix">${(produitValues[i].price* produitValues[i].quantite) /100}€</td> 
             <td><button class="btn-supprimer"><i class="fas fa-trash-alt"></i></button></td>
         </tr>   
@@ -101,4 +88,24 @@ deleteItem.forEach((btn, i) => {
     }
 
 // -----------------------------------------------------------------------------//
-/* const produitLocalStorage = produitValues */ 
+
+
+
+
+
+
+
+
+
+
+/*
+      // TRY incrémenter correctement plusieurs produits 
+        // Si l'id n'existe pas dans notre objet final, on l'ajoute
+        if (!panierProduit[produitValues]) {
+            panierProduit[produitValues] = produitLocalStorage[i];
+        } else { //Sinon, on incrémente seulement le compteur 
+            panierProduit[produitValues].quantite += parseInt(produitLocalStorage[i].values);
+        }
+*/         
+
+

@@ -81,17 +81,18 @@ getCamera(url).then(camera => {
             console.log(produitLocalStorage);
         }
 
-        // Création de l'algorithme regroupant les produits
-        let productFound = false;
-        for (let i = 0; i < produitLocalStorage.length; i++) {
-            // Si l'id de la camera existe déjà dans le localStorage, on l'incrémente
-            if (produitLocalStorage[i]._id === camera._id && produitLocalStorage[i].objectif === camera.objectif) {
-                produitLocalStorage[i].quantite += 1;
-                productFound = true;
-                ajoutProduitLocalStorage();
-                console.log(produitLocalStorage);
-            }
-        }
+       // Création de l'algorithme regroupant les produits
+       let productFound = false;
+       for (let i = 0; i < produitLocalStorage.length; i++) {
+           // Si l'id de la camera existe déjà dans le localStorage, on l'incrémente
+           if (produitLocalStorage[i]._id === camera._id && produitLocalStorage[i].objectif === camera.objectif) {
+               produitLocalStorage[i].quantite += camera.quantite;
+               productFound = true;
+               ajoutProduitLocalStorage();
+               console.log(produitLocalStorage);
+               break;
+           }
+       }
         // Si le produit n'a pas été trouvé, on l'ajoute au localStorage
         if (!productFound) {
             produitLocalStorage.push(camera);
