@@ -65,25 +65,31 @@
             <form class="form-panier">
                 <div class="form-group">
                     <label for="prenom">Prénom</label>
-                    <input type="text" name="prenom" id="prenom" required="" aria-invalid="false">
+                    <input type="text" name="prenom" id="prenom" class="form-input" required="" aria-invalid="false">
+                    <div class="form_erroMessage"></div>
                 </div>
                 <div class="form group">
                     <label for="nom">Nom</label>
-                    <input type="text" name="nom" id="nom" required="" aria-invalid="false">
+                    <input type="text" name="nom" id="nom" class="form-input" required="" aria-invalid="false">
+                    <div class="form_erroMessage"></div>
                 </div>
                 <div class="form-group">
                     <label for="adresse">Adresse</label>
-                    <input type="text" name="adresse" id="adresse" required="" aria-invalid="false">
+                    <input type="text" name="adresse" id="adresse" class="form-input" required="" aria-invalid="false">
+                    <div class="form_erroMessage"></div>
                 </div>
                 <div class="form-group">
                     <label for="ville">Ville</label>
-                    <input type="text" name="ville" id="ville" required="" aria-invalid="false">
+                    <input type="text" name="ville" id="ville" class="form-input" required="" aria-invalid="false">
+                    <div class="form_erroMessage"></div>
                 </div>
                 <div class="form-group">
                     <label for="email">e-mail</label>
-                    <input type="text" name="email" id="email" required="" aria-invalid="false">
+                    <input type="text" name="email" id="email" class="form-input" required="" aria-invalid="false">
+                    <div class="form_erroMessage"></div>
                 </div>
                 <button type="submit" class="bouton-panier" aria-label="Valider la commande">Valider la commande</button>
+                <p class="error" id="error"></p>
             </form>
         </section>
 
