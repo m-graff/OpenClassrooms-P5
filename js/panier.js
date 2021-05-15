@@ -34,7 +34,7 @@ if (produitLocalStorage === null || produitLocalStorage == 0) {
             <td id="recap-quantite">
             <button class="moins" data-product-id="${produitValues[i]._id}" data-product-lense="${produitValues[i].objectif}">-</button>
             <span class="boutons-quantite" data-product-id="${produitValues[i]._id}" data-product-lense="${produitValues[i].objectif}">${produitValues[i].quantite}</span>
-            <button value="+" class="plus">+</button>
+            <button class="plus" data-product-id="${produitValues[i]._id}" data-product-lense="${produitValues[i].objectif}">+</button>
             </td>
             <td class="recap-prix" data-product-id="${produitValues[i]._id}" data-product-lense="${produitValues[i].objectif}">${(produitValues[i].price* produitValues[i].quantite) /100}€</td> 
             <td><button class="btn-supprimer"><i class="fas fa-trash-alt"></i></button></td>
@@ -96,7 +96,7 @@ deleteItem.forEach((btn, i) => {
 
 // Déclaration boutons ajouter - supprimer produit dans le panier
 let boutonsMoins = document.getElementsByClassName('moins');
-let boutonPlus = document.getElementById('plus');
+let boutonsPlus = document.getElementsByClassName('plus');
 
 // Fonction maj quantite suite à l'appel des boutons
 function updateQuantite (id, objectif, quantite) {
@@ -126,14 +126,30 @@ for (let j = 0; j < boutonsMoins.length; j++) {
         calculerTotal();
     })
 }
-
 // Afficher le montant par l'appel de la fonction
 calculerTotal();
 
 
+// Cas d'ajout d'un article, bouton "+"
+// Boucle sur le bouton pour récupérer le tableau des differents boutons
+for (let j = 0; j < boutonsPlus.length; j++) {
 
-
-
+    boutonsPlus[j].addEventListener('click', function (e) {
+        console.log(e.target.dataset);
+        for (let i = 0; i < produitValues.length; i++) {
+            if (produitValues[i]._id === e.target.dataset.productId && produitValues[i].objectif === e.target.dataset.productLense) {
+                produitValues[i].quantite++;
+                updateQuantite(produitValues[i]._id, produitValues[i].objectif, produitValues[i].quantite);
+                updatePrix(produitValues[i]._id, produitValues[i].objectif, (produitValues[i].price * produitValues[i].quantite)/100);
+            }
+            console.log(produitValues);
+        }
+        localStorage.setItem('panier', JSON.stringify(produitLocalStorage));
+        calculerTotal();
+    })
+}
+// Afficher le montant par l'appel de la fonction
+calculerTotal();
 
 
 
