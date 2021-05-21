@@ -168,6 +168,111 @@ document.getElementById("button-vider").addEventListener('click', function () {
 
 // -----------------------------------------------------------------------------//
 
+// Formulaire de confirmation d'achat
+
+const form = document.querySelector('form');
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    console.log('Prénom', e.target.prenom.value)
+    console.log('Nom', e.target.nom.value)
+    console.log('Adresse', e.target.adresse.value)
+    console.log('Ville', e.target.ville.value)
+    console.log('Email', e.target.email.value)
+});
+
+const inputs = document.querySelectorAll("input");
+
+const checkValidity = (input) => {
+    input.addEventListener('invalid', (e) => {
+        e.preventDefault()
+        if (!e.target.validity.valid) {
+            e.target.parentElement.classList.add('error')
+        }
+    })
+    input.addEventListener('input', (e) => {
+        if (e.target.validity.valid) {
+            e.target.parentElement.classList.remove('error')
+        }
+    })
+}
+Array.from(inputs).forEach(checkValidity);
+
+
+
+/*
+// Suite - Fonctionnel jusqu'ici
+document.getElementById("error").textContent = "";
+e.preventDefault();
+
+// Assignation des inputs à l'object client
+let client = {
+    prenom: document.getElementById("prenom").value,
+    nom: document.getElementById("nom").value,
+    adresse: document.getElementById("adresse").value,
+    ville: document.getElementById("ville").value,
+    email: document.getElementById("email").value,
+}
+
+// Si le panier n'existe pas ou qu'il est vide, signaler que le panier est vide 
+if (produitLocalStorage === null || Object.keys(produitLocalStorage)[0] === undefined) {
+    let cartError = document.getElementById("error");
+    cartError.textContent = "Attention, votre panier est vide !"
+    console.log("Vous n'avez pas de produits dans votre panier")
+
+} else {
+    // Initialisation du tableau
+    let productsToPost = [];
+    // Pour tous les objets dans produitLocalStorage
+    for (let camera in produitLocalStorage) {
+        // Pour la longueur de la quantité
+        for (let i = 0; i < produitLocalStorage[camera].quantity; i++) {
+            // Ajouter l'id de l'objet autant de fois ce même objet dans produitLocalStorage
+            productsToPost.push(produitLocalStorage[camera]._id);
+        }
+    }
+
+    // Assignation de userContact et productsToPost pour l'envoyer au backend -- REVOIR CETTE PARTIE 
+    let allObjectsToPost = {
+        contact : client,
+        product : id[]
+    }
+
+    // Méthode POST pour envoyer l'objet allObjectsToPost
+    fetch('https://oc-p5-api.herokuapp.com/api/cameras/order', {
+        method : 'POST',
+        body : JSON.stringify(allObjectsToPost),
+        headers : {
+            'Content-type' : 'application/json'
+        }
+    })
+
+    // Récupération de la réponse du backend
+    .then(response => response.JSON())
+    .then(JSON => {
+        console.log(json);
+
+        // Dépuis l'objet retournée par le backend
+        let orderPrice = localStorage.getItem('sommePanier')
+        let order = json;
+        order.prix = orderPrice;
+        // Suppression du localStorage pour ne plus avoir de panier après validation
+        localStorage.clear();
+        // Ajout de l'objet order dans le localStorage qui contient la réponse du backend ainsi que le prix total
+        localStorage.setItem('order', JSON.stringify(order));
+    
+        // Laisser le temps au navigateur d'indiquer que tout est bon, puis rediriger vers la page de remerciement
+        setTimeout(redirection, 2000);
+    })
+}
+})
+*/
+
+
+
+
+
+
 /*
 // Formulaire de confirmation d'achat
 
@@ -187,7 +292,7 @@ let regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9
 // Ecoute de l'évènement lors de l'envoi du formulaire -- MON JS FORM COMMENCE ICI
 document.querySelector(".form-panier").addEventListener('submit', function (e) {
 
-    // Assignation par défaut du texte d'errur
+    // Assignation par défaut du texte d'erreur
     document.getElementById("error").textContent = "";
     e.preventDefault();
 

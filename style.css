@@ -385,6 +385,23 @@ tfoot {
     border-radius: 5px;
 }
 
+/* Essai Modif template Rémi */
+.form-group.error input {
+    border: 3px solid red;
+    border-radius: 5px;
+}
+
+.form-group.error label {
+    color: red;
+}
+
+.form-group.error::after {
+    content: 'Ce champs est invalide';
+    display: block;
+    color: red;
+    padding: 5px 0;
+    font-size: .9rem;
+}
 
 /* --------------------------------------------------------------------------- CSS JS PANIER ------------------------------------------------------------------------- */
 
