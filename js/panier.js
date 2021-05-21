@@ -9,15 +9,17 @@ const panierProduit = document.querySelector("#panier-contenu");
 let structurePanierProduit = [];
 
 // Constante qui contient les valeurs de notre objet
-const produitValues = produitLocalStorage;
+const produitValues = produitLocalStorage || [];
 
 // Si le panier est vide : afficher le panier vide 
 if (produitLocalStorage === null || produitLocalStorage == 0) {
     const panierVide = 
     `
-        <div id="panier-produit-vide">
+    <tr>
+        <td colspan="5" id="panier-produit-vide">
             <p>Le panier est vide</p>
-        </div>
+        </td>
+    </tr>
     `
     panierProduit.innerHTML = panierVide;
     console.log(panierProduit);
@@ -108,22 +110,36 @@ function updatePrix (id, objectif, prix) {
     document.querySelector(`.recap-prix[data-product-id="${id}"][data-product-lense="${objectif}"]`).innerHTML = prix + "€";
 }
 
+// Function mise à jour quantité panier 
+function majQuantite (majType, productId, productLense) {
+    for (let i = 0; i < produitValues.length; i++) {
+        if (produitValues[i]._id === productId && produitValues[i].objectif === productLense)  { 
+            if (produitValues[i].quantite === 1) {  
+                deleteItemSelected(i);
+                return;
+            }
+            if (majType === "decrement") {
+                produitValues[i].quantite--;
+            } 
+            if (majType === "increment") {
+                produitValues[i].quantite++;
+            }
+            updateQuantite(produitValues[i]._id, produitValues[i].objectif, produitValues[i].quantite);
+            updatePrix(produitValues[i]._id, produitValues[i].objectif, (produitValues[i].price * produitValues[i].quantite)/100);
+        }
+        console.log(produitValues);
+    }
+    localStorage.setItem('panier', JSON.stringify(produitLocalStorage));
+    calculerTotal();
+}
+
 // Cas supression d'un article, bouton "-"
 // Boucle sur le bouton pour récupérer le tableau des differents boutons
 for (let j = 0; j < boutonsMoins.length; j++) {
 
     boutonsMoins[j].addEventListener('click', function (e) {
-        console.log(e.target.dataset);
-        for (let i = 0; i < produitValues.length; i++) {
-            if (produitValues[i]._id === e.target.dataset.productId &&  produitValues[i].objectif === e.target.dataset.productLense)  { 
-                produitValues[i].quantite--;
-                updateQuantite(produitValues[i]._id, produitValues[i].objectif, produitValues[i].quantite);
-                updatePrix(produitValues[i]._id, produitValues[i].objectif, (produitValues[i].price * produitValues[i].quantite)/100);
-            }
-            console.log(produitValues);
-        }
-        localStorage.setItem('panier', JSON.stringify(produitLocalStorage));
-        calculerTotal();
+        console.log(e.target.dataset); 
+        majQuantite('decrement', e.target.dataset.productId, e.target.dataset.productLense);
     })
 }
 // Afficher le montant par l'appel de la fonction
@@ -136,29 +152,19 @@ for (let j = 0; j < boutonsPlus.length; j++) {
 
     boutonsPlus[j].addEventListener('click', function (e) {
         console.log(e.target.dataset);
-        for (let i = 0; i < produitValues.length; i++) {
-            if (produitValues[i]._id === e.target.dataset.productId && produitValues[i].objectif === e.target.dataset.productLense) {
-                produitValues[i].quantite++;
-                updateQuantite(produitValues[i]._id, produitValues[i].objectif, produitValues[i].quantite);
-                updatePrix(produitValues[i]._id, produitValues[i].objectif, (produitValues[i].price * produitValues[i].quantite)/100);
-            }
-            console.log(produitValues);
-        }
-        localStorage.setItem('panier', JSON.stringify(produitLocalStorage));
-        calculerTotal();
+        majQuantite('increment', e.target.dataset.productId, e.target.dataset.productLense);
     })
 }
 // Afficher le montant par l'appel de la fonction
 calculerTotal();
 
+// -----------------------------------------------------------------------------//
 
-
-
-
-
-
-
-
+// Bouton vider entièrement le panier 
+document.getElementById("button-vider").addEventListener('click', function () {
+    localStorage.removeItem('panier');
+    window.location.reload();
+})
 
 
 
@@ -170,7 +176,7 @@ calculerTotal();
 /*
 // Formulaire de confirmation d'achat
 
-// Récupération de la saisie du client
+// Récupération de la saisie du client -- NON UTLISER
 const form = document.getElementsByClassName(".form-panier");
 const prenom = document.getElementById("prenom");
 const nom = document.getElementById("nom");
@@ -178,12 +184,12 @@ const adresse = document.getElementById("adresse");
 const ville = document.getElementById("ville");
 const email = document.getElementById("email");
 
-// Déclaration des REGEX
+// Déclaration des REGEX -- PATERN A METTRE DANS LE HTML
 let regexText = /^[A-Za-zçàêéèîïÀÊÉÈÎÏ\s-]{2,}$/;
 let regexAdresse = /^[A-Za-zçàêéèîïÀÊÉÈÎÏ0-9\s-]{2,}$/;
 let regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9]+)*$/;
 
-// Ecoute de l'évènement lors de l'envoi du formulaire
+// Ecoute de l'évènement lors de l'envoi du formulaire -- MON JS FORM COMMENCE ICI
 document.querySelector(".form-panier").addEventListener('submit', function (e) {
 
     // Assignation par défaut du texte d'errur
@@ -229,10 +235,10 @@ document.querySelector(".form-panier").addEventListener('submit', function (e) {
                 }
             }
 
-            // Assignation de userContact et productsToPost pour l'envoyer au backend
+            // Assignation de userContact et productsToPost pour l'envoyer au backend -- REVOIR CETTE PARTIE 
             let allObjectsToPost = {
                 contact : client,
-                camera : productsToPost
+                product : id[]
             }
 
             // Méthode POST pour envoyer l'objet allObjectsToPost
@@ -264,7 +270,7 @@ document.querySelector(".form-panier").addEventListener('submit', function (e) {
         }
     })
 
-    // Fonction vérifiant les inputs du formulaire
+    // Fonction vérifiant les inputs du formulaire -- NON UTILISE / PASSER DANS LE HTML
     function formCheck() {
         const prenomValue = prenom.value;
         const nomValue = nom.value;
