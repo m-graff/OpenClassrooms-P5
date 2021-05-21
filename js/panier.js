@@ -114,6 +114,9 @@ function updatePrix (id, objectif, prix) {
 function majQuantite (majType, productId, productLense) {
     for (let i = 0; i < produitValues.length; i++) {
         if (produitValues[i]._id === productId && produitValues[i].objectif === productLense)  { 
+            if (majType === "increment") {
+                produitValues[i].quantite++;
+            }
             if (produitValues[i].quantite === 1) {  
                 deleteItemSelected(i);
                 return;
@@ -121,9 +124,6 @@ function majQuantite (majType, productId, productLense) {
             if (majType === "decrement") {
                 produitValues[i].quantite--;
             } 
-            if (majType === "increment") {
-                produitValues[i].quantite++;
-            }
             updateQuantite(produitValues[i]._id, produitValues[i].objectif, produitValues[i].quantite);
             updatePrix(produitValues[i]._id, produitValues[i].objectif, (produitValues[i].price * produitValues[i].quantite)/100);
         }
@@ -165,11 +165,6 @@ document.getElementById("button-vider").addEventListener('click', function () {
     localStorage.removeItem('panier');
     window.location.reload();
 })
-
-
-
-
-
 
 // -----------------------------------------------------------------------------//
 
