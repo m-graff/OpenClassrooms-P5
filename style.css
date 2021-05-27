@@ -405,20 +405,18 @@ tfoot {
 
 /* --------------------------------------------------------------------------- CSS JS PANIER ------------------------------------------------------------------------- */
 
+#prevent-msg {
+    visibility: hidden;
+    text-align: center;
+    margin-bottom: 5%;
+    text-transform: uppercase;
+    font-weight: bold;
+}
 
 
 
-/* Panier JS  avant modif
- `
-        <div class="container-recapitulatif">
-            <div><span class="gras">Quantité :</span> ${produitLocalStorage[i].quantite} <span class="gras"> - Produit : </span> ${produitLocalStorage[i].name} - ${produitLocalStorage[i].objectif}</div>
-            <div>
-                <div class="prix-produit"><span class="gras">${produitLocalStorage[i].price}€</span></div> 
-                <div><button class="btn-supprimer"> supprimer </button></div>
-            </div>
-        </div>   
-        ` ;
-*/
+
+
 
 
 /* ------------------------------------------------------------------------- PAGE CONFIRMATION ----------------------------------------------------------------------- */

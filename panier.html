@@ -68,27 +68,27 @@
             <p><em>Merci de veiller à bien remplir tous les champs</em></p>
             <form class="form-panier">
                 <div class="form-group">
-                    <label for="prenom">Prénom</label>
+                    <label for="prenom">Prénom*</label>
                     <input type="text" name="prenom" id="prenom" class="form-input" required="" aria-invalid="false" pattern="^\D*$" >
                     <div class="form_erroMessage"></div>
                 </div>
                 <div class="form-group">
-                    <label for="nom">Nom</label>
+                    <label for="nom">Nom*</label>
                     <input type="text" name="nom" id="nom" class="form-input" required="" aria-invalid="false" pattern="^\D*$">
                     <div class="form_erroMessage"></div>
                 </div>
                 <div class="form-group">
-                    <label for="adresse">Adresse</label>
+                    <label for="adresse">Adresse*</label>
                     <input type="text" name="adresse" id="adresse" class="form-input" required="" aria-invalid="false" >
                     <div class="form_erroMessage"></div>
                 </div>
                 <div class="form-group">
-                    <label for="ville">Ville</label>
+                    <label for="ville">Ville*</label>
                     <input type="text" name="ville" id="ville" class="form-input" required="" aria-invalid="false" >
                     <div class="form_erroMessage"></div>
                 </div>
                 <div class="form-group">
-                    <label for="email">e-mail</label>
+                    <label for="email">e-mail*</label>
                     <input type="text" name="email" id="email" class="form-input" required="" aria-invalid="false" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
                     <div class="form_erroMessage"></div>
                 </div>
@@ -96,6 +96,14 @@
                 <p class="error" id="error"></p>
             </form>
         </section>
+
+        <div id="prevent-msg">
+
+            <p>Merci de sélectionner un article avant de remplir ce formulaire !</p>
+
+            <button type="button" onclick="window.location.href = 'index.html';">Reprendre vos achats</button>
+
+        </div>
 
         <!-- Footer -->
         <footer class="footer-distributed">

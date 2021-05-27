@@ -43,7 +43,7 @@ if (produitLocalStorage === null || produitLocalStorage == 0) {
         </tr>  
         ` ;
 
-    }  
+    }   
     
         // Injection du code html dans le panier
         panierProduit.innerHTML = structurePanierProduit;
@@ -168,20 +168,63 @@ document.getElementById("button-vider").addEventListener('click', function () {
 
 // -----------------------------------------------------------------------------//
 
-// Formulaire de confirmation d'achat
 
+// Formulaire de confirmation d'achat - FONCTIONNEL
+
+// Fonction d'envoi des données du formulaire via la méthode API fetch POST
+function sendFormData(data) { 
+
+    fetch("https://oc-p5-api.herokuapp.com/api/cameras/order", {
+        method: "POST",
+        headers: {
+        "Content-Type": "application/json"
+        },
+        body: JSON.stringify(order)
+    })
+    .then(response => response.json())
+    .then(response => {
+        console.log(response);
+        storeIdName(response); 
+    })
+    .catch(error => alert("Erreur : " + error));   
+}
+
+// Envoi des données avec cette même fonction 
 const form = document.querySelector('form');
+const formDeflt = document.getElementById('prevent-msg');
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault()
-    console.log('Prénom', e.target.prenom.value)
-    console.log('Nom', e.target.nom.value)
-    console.log('Adresse', e.target.adresse.value)
-    console.log('Ville', e.target.ville.value)
-    console.log('Email', e.target.email.value)
+form.addEventListener('submit', function (e) {
+    // Comportement par défaut qui empêche l'envoi du formulaire sans la validation préalable
+    e.preventDefault(); 
+    // Récupération des valeurs du client
+    let contact = {
+        firstName: prenom.value,
+        lastName: nom.value,
+        address: adresse.value,
+        city: ville.value,
+        email: email.value
+    };
+    // Récupération des données du panier (ids des produits séléctionnés)
+    let products = produitLocalStorage.map(camera => camera._id);
+    order = {contact, products};
+    // si aucun article n'est présent dans le panier, afficher le bouton retour au choix des produits
+    if (products.length == 0) {
+        formDeflt.style.visibility = "visible";
+        formDeflt.style.zIndex = "2000";
+    // Sinon, envoie des données du formulaire via la fonction API fecth POST
+    } else {
+        sendFormData(order);
+    }
 });
 
+
+// Validation préalable du formulaire
 const inputs = document.querySelectorAll("input");
+
+const infosClient = {
+    contact: {},
+    products: [],
+}
 
 const checkValidity = (input) => {
     input.addEventListener('invalid', (e) => {
@@ -193,79 +236,110 @@ const checkValidity = (input) => {
     input.addEventListener('input', (e) => {
         if (e.target.validity.valid) {
             e.target.parentElement.classList.remove('error')
+            return (infosClient.contact = {
+                firstName: prenom.value,
+                lastName: nom.value,
+                address: adresse.value,
+                city: ville.value,
+                email: email.value,
+            })
         }
     })
 }
+
 Array.from(inputs).forEach(checkValidity);
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    console.log('Prénom', e.target.prenom.value)
+    console.log('Nom', e.target.nom.value)
+    console.log('Adresse', e.target.adresse.value)
+    console.log('Ville', e.target.ville.value)
+    console.log('Email', e.target.email.value)
+});
+
+async function storeIdName(data) {
+    await localStorage.setItem("orderId", data.orderId);
+    await localStorage.setItem("orderName", data.contact.firstName);
+    // Renvoie vers la page de confirmation de commande, avec le prix total en memoire dans l url
+    window.location.href = "confirmation.html" ;
+}
+
 
 
 
 /*
-// Suite - Fonctionnel jusqu'ici
-document.getElementById("error").textContent = "";
-e.preventDefault();
+// Formulaire de confirmation d'achat
+// Try de base - A CONSERVER 
+const form = document.querySelector('form');
 
-// Assignation des inputs à l'object client
-let client = {
-    prenom: document.getElementById("prenom").value,
-    nom: document.getElementById("nom").value,
-    adresse: document.getElementById("adresse").value,
-    ville: document.getElementById("ville").value,
-    email: document.getElementById("email").value,
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const products = []
+
+    const panier = JSON.parse(localStorage.getItem('panier'))
+    for (let camera of Object.values(panier)) {
+        products.push(camera.id)
+    }
+    const data = {
+        contact: {
+            firstName: e.target.prenom.value,
+            lastName: e.target.nom.value,
+            address: e.target.adresse.value,
+            city: e.target.ville.value,
+            email: e.target.email.value
+        },
+        products
+    }
+    post("https://oc-p5-api.herokuapp.com/api/cameras/order", data).then((response) => {
+        window.location = `./confirmation.html?id=${response.orderId}&user=${response.contact.firstName}`; 
+        // Redirection vers la page de confirmation de commande
+    })
+});
+
+const inputs = document.querySelectorAll("input");
+
+const infosClient = {
+    contact: {},
+    products: [],
 }
 
-// Si le panier n'existe pas ou qu'il est vide, signaler que le panier est vide 
-if (produitLocalStorage === null || Object.keys(produitLocalStorage)[0] === undefined) {
-    let cartError = document.getElementById("error");
-    cartError.textContent = "Attention, votre panier est vide !"
-    console.log("Vous n'avez pas de produits dans votre panier")
-
-} else {
-    // Initialisation du tableau
-    let productsToPost = [];
-    // Pour tous les objets dans produitLocalStorage
-    for (let camera in produitLocalStorage) {
-        // Pour la longueur de la quantité
-        for (let i = 0; i < produitLocalStorage[camera].quantity; i++) {
-            // Ajouter l'id de l'objet autant de fois ce même objet dans produitLocalStorage
-            productsToPost.push(produitLocalStorage[camera]._id);
-        }
-    }
-
-    // Assignation de userContact et productsToPost pour l'envoyer au backend -- REVOIR CETTE PARTIE 
-    let allObjectsToPost = {
-        contact : client,
-        product : id[]
-    }
-
-    // Méthode POST pour envoyer l'objet allObjectsToPost
-    fetch('https://oc-p5-api.herokuapp.com/api/cameras/order', {
-        method : 'POST',
-        body : JSON.stringify(allObjectsToPost),
-        headers : {
-            'Content-type' : 'application/json'
+const checkValidity = (input) => {
+    input.addEventListener('invalid', (e) => {
+        e.preventDefault()
+        if (!e.target.validity.valid) {
+            e.target.parentElement.classList.add('error')
         }
     })
-
-    // Récupération de la réponse du backend
-    .then(response => response.JSON())
-    .then(JSON => {
-        console.log(json);
-
-        // Dépuis l'objet retournée par le backend
-        let orderPrice = localStorage.getItem('sommePanier')
-        let order = json;
-        order.prix = orderPrice;
-        // Suppression du localStorage pour ne plus avoir de panier après validation
-        localStorage.clear();
-        // Ajout de l'objet order dans le localStorage qui contient la réponse du backend ainsi que le prix total
-        localStorage.setItem('order', JSON.stringify(order));
-    
-        // Laisser le temps au navigateur d'indiquer que tout est bon, puis rediriger vers la page de remerciement
-        setTimeout(redirection, 2000);
+    input.addEventListener('input', (e) => {
+        if (e.target.validity.valid) {
+            e.target.parentElement.classList.remove('error')
+            return (infosClient.contact = {
+                firstName: prenom.value,
+                lastName: nom.value,
+                address: adresse.value,
+                city: ville.value,
+                email: email.value,
+            })
+        }
     })
 }
-})
+
+Array.from(inputs).forEach(checkValidity);
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    console.log('Prénom', e.target.prenom.value)
+    console.log('Nom', e.target.nom.value)
+    console.log('Adresse', e.target.adresse.value)
+    console.log('Ville', e.target.ville.value)
+    console.log('Email', e.target.email.value)
+});
+
+const panier = JSON.parse(localStorage.getItem('panier'));
+for (let camera of Object.values(panier)) {
+    panierProduit(camera.id, camera.name, camera.price, camera.imageUrl, camera.quantity)
+}
 */
 
 
@@ -273,8 +347,104 @@ if (produitLocalStorage === null || Object.keys(produitLocalStorage)[0] === unde
 
 
 
+
+
 /*
-// Formulaire de confirmation d'achat
+    // Essai Products
+    products = produitLocalStorage.map(camera => camera.id);
+
+
+    // Essai Products
+    products.forEach((camera) => {
+        infosClient.products.push(camera.id);
+    })
+*/
+
+
+/*
+// Formulaire de confirmation d'achat -- 2e TRY ---
+const form = document.querySelector('form');
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const products = [];
+    const panier = JSON.parse(localStorage.getItem('panier'))
+    for (let camera of Object.values(panier)) {
+        products.push(camera._id)
+    }
+    const data = {
+        contact: {
+            prenom: e.target.prenom.value,
+            nom: e.target.nom.value,
+            adresse: e.target.adresse.value,
+            ville: e.target.ville.value,
+            email: e.target.email.value
+        },
+        products
+    }
+    post("https://oc-p5-api.herokuapp.com/api/cameras/order", data).then((response) => {
+        window.location = `./confirmation.html?id=${response.orderId}&user=${response.contact.prenom}`; // Redirige vers la page de confirmation de commande
+    })
+});
+
+const inputs = document.querySelectorAll("input");
+const infosClient = {
+    contact: {},
+    products: [],
+}
+
+const checkValidity = (input) => {
+    input.addEventListener('invalid', (e) => {
+        e.preventDefault()
+        if (!e.target.validity.valid) {
+            e.target.parentElement.classList.add('error')
+        }
+    })
+    input.addEventListener('input', (e) => {
+        if (e.target.validity.valid) {
+            e.target.parentElement.classList.remove('error')
+            return (infosClient.contact = {
+                prenom: e.target.prenom.value,
+                nom: e.target.nom.value,
+                adresse: e.target.adresse.value,
+                ville: e.target.ville.value,
+                email: e.target.email.value
+            })
+        }
+    })
+}
+
+Array.from(inputs).forEach(checkValidity);
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    console.log('Prénom', e.target.prenom.value)
+    console.log('Nom', e.target.nom.value)
+    console.log('Adresse', e.target.adresse.value)
+    console.log('Ville', e.target.ville.value)
+    console.log('Email', e.target.email.value)
+});
+
+
+const panier = JSON.parse(localStorage.getItem('panier'));
+for (let camera of Object.values(panier)) {
+    structurePanierProduit(camera._id, camera.objectif, camera.name, camera.price, camera.imageUrl, camera.quantite)
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// Formulaire de confirmation d'achat --- FIRST TRY 
 
 // Récupération de la saisie du client -- NON UTLISER
 const form = document.getElementsByClassName(".form-panier");
