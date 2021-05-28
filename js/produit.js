@@ -11,7 +11,7 @@ async function getCamera(url) {
 // Récupération de l'id du produit 
 const queryString = window.location.search;
 const cameraId = new URLSearchParams(queryString).get("product");
-console.log(cameraId);
+
 // Appel sur l'API pour récupérer le détail du produit
 const url = "https://oc-p5-api.herokuapp.com/api/cameras/" + cameraId;
 
@@ -27,7 +27,6 @@ function getLensesOptions(camera) {
 
 // Récupération des produits 
 getCamera(url).then(camera => {
-    console.log(camera)
     // Mise en place de la structure HTML
     produit.innerHTML +=
     `
@@ -78,7 +77,6 @@ getCamera(url).then(camera => {
         // Fonction d'ajout prouit dans le localStorage
         const ajoutProduitLocalStorage = () => {
             localStorage.setItem("panier", JSON.stringify(produitLocalStorage));
-            console.log(produitLocalStorage);
         }
 
        // Création de l'algorithme regroupant les produits
@@ -89,7 +87,6 @@ getCamera(url).then(camera => {
                produitLocalStorage[i].quantite += camera.quantite;
                productFound = true;
                ajoutProduitLocalStorage();
-               console.log(produitLocalStorage);
                break;
            }
        }
@@ -97,7 +94,6 @@ getCamera(url).then(camera => {
         if (!productFound) {
             produitLocalStorage.push(camera);
             ajoutProduitLocalStorage();
-            console.log(produitLocalStorage);
         }
         localStorage.setItem("product", camera);
         alert("Produit sélectionné !");
