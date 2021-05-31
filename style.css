@@ -149,12 +149,6 @@ hr {
     justify-content: center;
 }
 
-@media screen and (max-width: 1200px) {
-    #cartes-produits {
-        flex-flow: column wrap;
-    }
-}
-
 
 
 /* ------------------------------------------------------------------------------ CSS JS INDEX ----------------------------------------------------------------------- */
@@ -171,15 +165,6 @@ hr {
     display: flex;
     transition: transform 300ms;
     overflow: hidden;
-}
-
-@media screen and (max-width: 1200px) {
-    .produit-content {
-        width: 70%;
-        margin: auto;
-        margin-top: 5%;
-        margin-bottom: 5%;
-    }
 }
 
 .produit-content:hover {
@@ -210,10 +195,6 @@ hr {
     line-height: 1;
 }
 
-
-/* élément bouton avant suppresion et remplacement par une div
-<button type="button" class="bouton-details">Voir le produit</button>
-*/
 
 
 /* Footer */
@@ -304,7 +285,7 @@ hr {
 }
 
 .panier-titre {
-    margin-top: 5%;
+    margin-top: 10%;
 }
 
 .panier-sous-titre {
@@ -415,12 +396,15 @@ tfoot {
 }
 
 
-
-
+ 
 
 
 
 /* ------------------------------------------------------------------------- PAGE CONFIRMATION ----------------------------------------------------------------------- */
+
+#confirmation-titre {
+    margin: 5%;
+}
 
 .hero-confirmation {
     font-family: 'Oswald', sans-serif;
@@ -430,54 +414,131 @@ tfoot {
 
 .confirmation-bientot {
     font-size: 1.5em;
-    margin: 4%;
+    margin: 5%;
     text-transform: uppercase;
 }
 
 
 
+/* ------------------------------------------------------------------ MEDIA QUERIES - RESPONSIV DESIGN----------------------------------------------------------------- */
 
+/* Extra large devices (large desktops, 1200px and up) */
+@media screen and (min-width: 1200px) {
 
-
-
-
-
-
-
-/* ---------------------------------------------------------------------------------- TESTS -------------------------------------------------------------------------- */
-
-/*  Essaie flèche scroll bas 
-.liste-produits-fleche {
-    display: inline-block;
-    margin: auto;
-}
-
-.fleche-bas {
-        width: 0;
-        height: 0;
-        border-right: 16px solid transparent;
-        border-left: 16px solid transparent;
-        border-top: 20px solid #f7df6c;
-}
-
-@keyframes down{
-	0% {position:relative; top:0px; opacity: 0}
-	50% {position:relative; top:15px; opacity: 0.5}
-	100% {position:relative; top:30px; opacity: 1}
+    body {
+        margin: 0;
+    }
 
 }
 
-.fleche-bas{
-	animation: down 1s infinite linear alternate;
-	width: 3%;
-}
-*/
+/* Medium devices (tablets, 768px and up) */
+@media screen   and (max-width: 1023px) {
+    
+    /* Index & general */
 
-/* Description produits JS
-.description-produit {
-    font-family: 'Oswald', sans-serif;
-    font-weight: normal;
-    color: rgb(146, 141, 141);
-    padding-left: 5%;
+    .hero {
+        height: 500px;
+    }
+
+    .hero-sous-titre {
+        font-size: 1.3em;
+        padding-bottom: 10%;
+    }
+
+    .arrow {
+        display: none;
+    }
+
+    #cartes-produits {
+        margin-bottom: 20%;
+    }
+
+    .produit-content {
+        width: 70%;
+        margin: auto;
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+
+    /* Produits */
+
+    .produit-container {
+        width: 70%;
+    }
+
+    /* Panier */
+    #panier {
+        width: 70%;
+    }
+
+    .form-panier {
+        margin-bottom: 5%;
+    }
 }
-*/
+
+/* Small device (smartphone, to 767px max) */
+@media screen and (max-width: 767px) {
+
+    /* Index & general */
+
+    .logo-header i {
+        font-size: 1.5em;
+    }
+
+    .logo-img {
+        width: 70%;
+    }
+
+    .panier-header i {
+        font-size: 1.5em;
+    }
+
+    h1 {
+        font-size: 1.4em;
+    }
+
+    .hero-sous-titre {
+        font-size: 1.2em;
+    }
+
+    .produit-content {
+        width: 90%;
+    }
+
+    .footer-left {
+        padding-left: 5%;
+    }
+    .footer-right {
+        padding-right: 5%;
+    }
+
+    .footer-left a, .footer-right a {
+       font-size: 1em;
+    }
+
+    .footer-distributed .footer-center a  {
+        width: 30px;
+    }
+
+    /* Produits */
+
+    .produit-container {
+        width: 85%;
+    }
+
+    /* Panier */
+    #panier {
+        width: 85%;
+    }
+
+    /* Confirmation */
+    .confirmation-bientot {
+        margin: 10%;
+    }
+
+    .hero {
+        height: 450px;
+    }
+}
+
+
