@@ -27,7 +27,6 @@ nav a {
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
 
 .logo-header i {
@@ -149,9 +148,8 @@ hr {
     justify-content: center;
 }
 
-
-
 /* ------------------------------------------------------------------------------ CSS JS INDEX ----------------------------------------------------------------------- */
+
 .image-produit {
     width: 100%;
 }
@@ -195,8 +193,6 @@ hr {
     line-height: 1;
 }
 
-
-
 /* Footer */
 .footer-distributed {
     font-family: 'Oswald', sans-serif;
@@ -226,7 +222,6 @@ hr {
 	margin-right: 5px;
 	cursor: pointer;
 }
-
 
 /* -------------------------------------------------------------------------- PAGE PRODUITS -------------------------------------------------------------------------- */
 
@@ -275,7 +270,6 @@ hr {
     padding-bottom: 5%;
 }
 
-
 /* --------------------------------------------------------------------------- PAGE PANIER --------------------------------------------------------------------------- */
 
 /* Section récapitulatif du panier, avec la finalisation ou non de la commande */
@@ -323,7 +317,6 @@ tfoot {
 #panier-total {
     padding: 2%;
 }
-
 
 /* Formulaire de validation */
 #form-titre {
@@ -392,13 +385,7 @@ tfoot {
     margin-bottom: 5%;
     text-transform: uppercase;
     font-weight: bold;
-    
 }
-
-
- 
-
-
 
 /* ------------------------------------------------------------------------- PAGE CONFIRMATION ----------------------------------------------------------------------- */
 
@@ -418,9 +405,7 @@ tfoot {
     text-transform: uppercase;
 }
 
-
-
-/* ------------------------------------------------------------------ MEDIA QUERIES - RESPONSIV DESIGN----------------------------------------------------------------- */
+/* ------------------------------------------------------------------ MEDIA QUERIES - RESPONSIV DESIGN---------------------------------------------------------------- */
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media screen and (min-width: 1200px) {
@@ -428,14 +413,12 @@ tfoot {
     body {
         margin: 0;
     }
-
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media screen   and (max-width: 1023px) {
     
     /* Index & general */
-
     .hero {
         height: 500px;
     }
@@ -461,7 +444,6 @@ tfoot {
     }
 
     /* Produits */
-
     .produit-container {
         width: 70%;
     }
@@ -480,7 +462,6 @@ tfoot {
 @media screen and (max-width: 767px) {
 
     /* Index & general */
-
     .logo-header i {
         font-size: 1.5em;
     }
@@ -521,7 +502,6 @@ tfoot {
     }
 
     /* Produits */
-
     .produit-container {
         width: 85%;
     }
