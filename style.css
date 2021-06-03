@@ -405,6 +405,80 @@ tfoot {
     text-transform: uppercase;
 }
 
+
+/* -------------------------------------------------------------------------- MENTIONS LEGALES ------------------------------------------------------------------------*/
+
+#mentions_bloc {
+    width: 70%;
+    margin: auto;
+    padding-bottom: 5%;
+    margin-top: 5%;
+    font-size: 1em;
+  }
+  
+  @media screen and (max-width: 1280px) {
+    #mentions_bloc {
+      width: 70%;
+    }
+  }
+  
+  @media screen and (max-width: 944px) {
+    #mentions_bloc {
+      width: 80%;
+      margin-bottom: 5%;
+    }
+  }
+  
+  @media screen and (max-width: 570px) {
+    #mentions_bloc {
+      width: 90%;
+      margin-bottom: 10%;
+      line-height: 100%;
+    }
+  }
+  
+  #mentions_bloc .mentions_title {
+    font-size: 2em;
+    text-align: center;
+  }
+  
+  @media screen and (max-width: 944px) {
+    #mentions_bloc .mentions_title {
+      font-size: 1.5em;
+    }
+  }
+  
+  @media screen and (max-width: 570px) {
+    #mentions_bloc .mentions_title {
+      font-size: 1.3em;
+      margin-top: 15%;
+    }
+  }
+  
+  .mentions_content {
+    margin: 8%;
+    text-align: justify;
+    font-size: 1.1em;
+  }
+  
+  @media screen and (max-width: 944px) {
+    .mentions_content {
+      font-size: .9em;
+    }
+  }
+  
+  @media screen and (max-width: 570px) {
+    .mentions_content {
+      font-size: .8em;
+    }
+  }
+  
+  .mentions_content h3 {
+    text-align: center;
+  }
+
+
+
 /* ------------------------------------------------------------------ MEDIA QUERIES - RESPONSIV DESIGN---------------------------------------------------------------- */
 
 /* Extra large devices (large desktops, 1200px and up) */
@@ -520,5 +594,8 @@ tfoot {
         height: 450px;
     }
 }
+
+
+
 
 
