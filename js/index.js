@@ -22,7 +22,7 @@ getCamera(url).then(cameras => {
         cartesProduits.innerHTML += 
         ` 
             <article class="produit-content ${camera._id}">
-                <a href="/produit.html?product=${camera._id}">
+                <a href="produit.html?product=${camera._id}">
                     <img class="image-produit" src="${camera.imageUrl}" alt="photo de l'appareil">
                     <div class="titre-produit">
                         <h3 class="nom-produit">${camera.name}</h3>
