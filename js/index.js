@@ -1,10 +1,4 @@
-// Exemple JSDOC
-/**
- * @param {*} url 
- * @param {*} callback 
- */
-
-
+// ------ Début implémentation JS index -----------
 
 // Création de la constante pour récupérer les données de l'API
 const cartesProduits = document.getElementById("cartes-produits");
@@ -41,4 +35,10 @@ getCamera(url).then(cameras => {
 
 
 
+
+// Exemple JSDOC
+/**
+ * @param {*} url 
+ * @param {*} callback 
+ */
 

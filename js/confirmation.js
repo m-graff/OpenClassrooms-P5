@@ -1,3 +1,4 @@
+// ------ Début implémentation JS confirmation -----------
 
 // Cibler les éléments du DOM
 let confirmedName = document.getElementById("confirmation-nom");
