@@ -29,7 +29,7 @@ nav a {
     align-items: center;
 }
 
-.logo-header i {
+.logo-header span {
     color: white;
     font-size: 1.8em;
     margin-right: 7%;
@@ -40,7 +40,7 @@ nav a {
     padding-top: 8%;
 }
 
-.panier-header i {
+.panier-header span {
     color: white;
     font-size: 1.8em;
     margin-top: 15%;
@@ -359,7 +359,6 @@ tfoot {
     border-radius: 5px;
 }
 
-/* Essai Modif template Rémi */
 .form-group.error input {
     border: 3px solid red;
     border-radius: 5px;
@@ -490,7 +489,7 @@ tfoot {
 }
 
 /* Medium devices (tablets, 768px and up) */
-@media screen   and (max-width: 1023px) {
+@media screen and (max-width: 1023px) {
     
     /* Index & general */
     .hero {
@@ -517,6 +516,10 @@ tfoot {
         margin-bottom: 5%;
     }
 
+    #liste-produits {
+        width: 70%;
+    }
+
     /* Produits */
     .produit-container {
         width: 70%;
@@ -536,7 +539,7 @@ tfoot {
 @media screen and (max-width: 767px) {
 
     /* Index & general */
-    .logo-header i {
+    .logo-header span {
         font-size: 1.5em;
     }
 
@@ -544,7 +547,7 @@ tfoot {
         width: 70%;
     }
 
-    .panier-header i {
+    .panier-header span {
         font-size: 1.5em;
     }
 
@@ -558,6 +561,10 @@ tfoot {
 
     .produit-content {
         width: 90%;
+    }
+
+    #liste-produits {
+        width: 85%;
     }
 
     .footer-left {
