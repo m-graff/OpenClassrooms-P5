@@ -244,7 +244,7 @@ const checkValidity = (input) => {
 Array.from(inputs).forEach(checkValidity);
 
 // Function qui confirme la commande 
-async function storeIdName(data) {
+    function storeIdName(data) {
     localStorage.setItem("orderId", data.orderId);
     localStorage.setItem("orderName", data.contact.firstName);
     localStorage.setItem("orderTotal", getTotal ());

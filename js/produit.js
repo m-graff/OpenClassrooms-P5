@@ -62,7 +62,7 @@ getCamera(url).then(camera => {
     document.getElementById("produit-form").addEventListener("submit", function (e) {
     e.preventDefault();
     
-        // Déclaration de la variable localStorage
+        // Déclaration de la variable produitLocalStorage
         let produitLocalStorage = JSON.parse(localStorage.getItem("panier"));
 
         // Initialisation de la variable produitLocalStorage dans le cas où le localStorage est vide
@@ -74,7 +74,7 @@ getCamera(url).then(camera => {
         camera["objectif"] = e.target.objectif.value;
         camera["quantite"] = parseInt(e.target.quantite.value);
 
-        // Fonction d'ajout prouit dans le localStorage
+        // Fonction d'ajout produit dans le localStorage
         const ajoutProduitLocalStorage = () => {
             localStorage.setItem("panier", JSON.stringify(produitLocalStorage));
         }
@@ -96,7 +96,8 @@ getCamera(url).then(camera => {
             ajoutProduitLocalStorage();
         }
         localStorage.setItem("product", camera);
-        alert("Produit sélectionné !");
+        alert("Produit sélectionné !"); // Alerter le client que son produit a bien été ajouté au panier
     })
 });
  
+

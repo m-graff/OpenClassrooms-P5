@@ -17,27 +17,16 @@ nav {
     background-color:  #37373d;
     height: 80px;
     display: flex;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 nav a {
     margin: auto;
 }
 
-.logo-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.logo-header span {
-    color: white;
-    font-size: 1.8em;
-    margin-right: 7%;
-    padding-top: 4%;
-}
-
 .logo-img {
-    padding-top: 8%;
+    width: 170px;
 }
 
 .panier-header span {
@@ -492,6 +481,7 @@ tfoot {
 @media screen and (max-width: 1023px) {
     
     /* Index & general */
+
     .hero {
         height: 500px;
     }
@@ -539,12 +529,9 @@ tfoot {
 @media screen and (max-width: 767px) {
 
     /* Index & general */
-    .logo-header span {
-        font-size: 1.5em;
-    }
 
     .logo-img {
-        width: 70%;
+        width: 130px;
     }
 
     .panier-header span {
