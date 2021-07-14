@@ -28,8 +28,24 @@ getCamera(url).then(cameras => {
                 </a>
             </article>
         `
-    });
+    })
 })
+// Comportement dans le cas où la requête est rejetée
+.catch(function (error) {
+    console.log("Il y a eu un problème avec l'opération " + error);
+    alert('Oups, la connexion a échouée !');
+});
+
+
+
+
+
+
+
+
+
+
+
 
 
 

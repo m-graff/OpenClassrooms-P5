@@ -4,9 +4,10 @@
 const produit = document.getElementById("produit");
 // Fonction qui récupère les infos de l'API et renvoie une promesse JSON 
 async function getCamera(url) {
-    let result = await fetch(url)
-    return result.json()
+    let result = await fetch(url) 
+    return result.json() 
 }
+
 
 // Récupération de l'id du produit 
 const queryString = window.location.search;
@@ -97,7 +98,20 @@ getCamera(url).then(camera => {
         }
         localStorage.setItem("product", camera);
         alert("Produit sélectionné !"); // Alerter le client que son produit a bien été ajouté au panier
-    })
+    }) 
+})
+// Comportement dans le cas où la requête est rejetée
+.catch(function (error) {
+    console.log("Il y a eu un problème avec l'opération " + error);
+    alert('Oups, la connexion a échouée !');
 });
+
  
+
+
+
+
+
+
+
 
